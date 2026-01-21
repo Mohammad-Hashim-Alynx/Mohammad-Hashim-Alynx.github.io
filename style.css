@@ -65,11 +65,12 @@ nav a:hover::after {
 }
 
 /* ================= HERO ================= */
-header {
+/* Home page hero layout only */
+.home-header {
     min-height: 100vh;
 }
 
-header section {
+.home-header section {
     min-height: 85vh;
     display: flex;
     flex-direction: column;
