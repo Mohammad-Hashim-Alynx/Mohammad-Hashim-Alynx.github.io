@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Alynx™ Geolocation-Based NTP WiFi LCD Clock | MD Hashim</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header>
+    <nav>
+        <h2>MD Hashim</h2>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="../resume.html">Resume</a></li>
+            <li><a href="../projects.html">Projects</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="reveal">
+    <h1>Alynx™ Geolocation-Based NTP WiFi LCD Clock</h1>
+    <p>
+        ESP32-based internet-synchronized digital clock with automatic
+        timezone handling, large-format display, and web-based configuration.
+    </p>
+</section>
+
+<section class="reveal">
+    <h2>Project Overview</h2>
+    <p>
+        The Alynx™ NTP WiFi Clock is a professional-grade timekeeping system
+        designed to deliver accurate, unattended time synchronization using
+        internet NTP servers. It eliminates time drift, manual setting, and
+        post-power-loss reconfiguration commonly seen in conventional digital
+        clocks.
+    </p>
+    <p>
+        The system automatically connects to WiFi, synchronizes time via NTP,
+        applies geographic timezone offsets, and presents the information on a
+        large, high-visibility 20×4 LCD using custom-rendered digits.
+    </p>
+</section>
+
+<section class="reveal">
+    <h2>System Architecture</h2>
+    <p>
+        The system is built around an ESP32 microcontroller, selected for its
+        integrated WiFi, dual-core processing, and reliable real-time
+        performance. Time is obtained from global NTP servers and corrected
+        using configurable timezone offsets, including fractional offsets
+        such as UTC+5:30.
+    </p>
+    <p>
+        A 20×4 I²C LCD provides a large-format visual interface, while an
+        embedded web server enables configuration without firmware reflashing.
+    </p>
+
+    <!-- IMAGE PLACEHOLDER: System block diagram -->
+</section>
+
+<section class="reveal">
+    <h2>Key Features</h2>
+    <ul>
+        <li>Automatic NTP-based time synchronization</li>
+        <li>Large custom-rendered digits for high readability</li>
+        <li>12-hour and 24-hour display modes</li>
+        <li>Automatic timezone and offset handling</li>
+        <li>Web-based configuration interface</li>
+        <li>Persistent configuration storage</li>
+        <li>Robust WiFi auto-reconnect logic</li>
+    </ul>
+</section>
+
+<section class="reveal">
+    <h2>Connectivity & Reliability Engineering</h2>
+    <p>
+        The firmware implements multi-stage WiFi reconnection logic optimized
+        for real-world power and network instability. After power restoration,
+        the system aggressively retries connections during early boot and
+        transitions to stable retry intervals during normal operation.
+    </p>
+    <p>
+        During internet outages, the clock continues running using the ESP32’s
+        internal RTC and automatically resynchronizes once connectivity is
+        restored, ensuring minimal drift and uninterrupted display.
+    </p>
+
+    <!-- IMAGE PLACEHOLDER: WiFi reconnection logic flow -->
+</section>
+
+<section class="reveal">
+    <h2>User Interface & Configuration</h2>
+    <p>
+        A built-in web interface allows configuration of WiFi credentials,
+        timezone offsets, and display format using any standard web browser.
+        A physical push-button provides manual access to configuration mode
+        and recovery in case of network changes.
+    </p>
+    <p>
+        The display provides clear system feedback, including connection
+        status, date, and synchronization state, enabling unattended
+        long-term deployment.
+    </p>
+
+    <!-- IMAGE PLACEHOLDER: Web configuration UI -->
+</section>
+
+<section class="reveal">
+    <h2>Applications</h2>
+    <ul>
+        <li>Residential and office wall clocks</li>
+        <li>Server rooms and IT facilities</li>
+        <li>Classrooms and laboratories</li>
+        <li>Industrial control rooms</li>
+        <li>Public display and reception areas</li>
+    </ul>
+</section>
+
+<section class="reveal">
+    <h2>Performance Outcomes</h2>
+    <ul>
+        <li>Eliminated manual time-setting and drift</li>
+        <li>Reliable recovery after power and WiFi outages</li>
+        <li>High visibility time display suitable for large rooms</li>
+        <li>Zero-maintenance unattended operation</li>
+    </ul>
+</section>
+
+<section class="reveal">
+    <h2>Resume-Optimized Technical Summary</h2>
+    <ul>
+        <li>Designed and implemented an ESP32-based NTP-synchronized digital clock with automatic timezone handling</li>
+        <li>Developed robust WiFi auto-reconnect and boot-recovery logic for continuous operation</li>
+        <li>Implemented web-based configuration eliminating the need for firmware reflashing</li>
+        <li>Delivered a field-ready, unattended timekeeping system with high display readability</li>
+    </ul>
+</section>
+
+<section class="reveal">
+    <h2>System Images</h2>
+    <!-- IMAGE PLACEHOLDER -->
+</section>
+
+<section class="reveal">
+    <h2>Demonstration Video</h2>
+    <!-- VIDEO PLACEHOLDER -->
+</section>
+
+<section class="reveal">
+    <h2>Diagrams & Schematics</h2>
+    <!-- DIAGRAM PLACEHOLDER -->
+</section>
+
+<section class="reveal">
+    <h2>Source Code & Documentation</h2>
+    <!-- LINK PLACEHOLDER -->
+</section>
+
+<script src="../script.js"></script>
+</body>
+</html>
