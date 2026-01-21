@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IntelliFlow – Municipal Water Pump Automation System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header class="project-header">
+    <nav>
+        <h2>MD Hashim</h2>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../projects.html">Projects</a></li>
+        </ul>
+    </nav>
+
+    <section class="project-hero">
+        <h1>IntelliFlow™</h1>
+        <h3>Municipal Water Pump Automation & Protection System (ESP32-Based)</h3>
+        <p>
+            A failsafe, offline-first pump control system engineered for
+            municipal, agricultural, and industrial water infrastructure.
+        </p>
+    </section>
+</header>
+
+<main class="project-content">
+
+<!-- ================= PROJECT OVERVIEW ================= -->
+<section class="reveal">
+    <h2>1. Project Overview</h2>
+    <p>
+        IntelliFlow is a production-grade water pump automation system designed
+        for critical water infrastructure where reliability is non-negotiable.
+        It eliminates the failure modes of float switches and timer-based
+        controllers by enforcing deterministic, sensor-verified operation.
+    </p>
+    <p>
+        The system protects pumps from dry-running, prevents tank overflow,
+        handles intermittent water sources, and rejects false triggers caused
+        by turbulence or debris. It operates fully autonomously without cloud
+        dependency and is suitable for 24/7 deployment.
+    </p>
+</section>
+
+<!-- ================= SYSTEM ARCHITECTURE ================= -->
+<section class="reveal">
+    <h2>2. System Architecture</h2>
+    <p>
+        The architecture is centered on an ESP32 microcontroller and follows a
+        strict separation of concerns. Conductivity-based sensing feeds a
+        deterministic finite state machine, which drives an opto-isolated
+        pump relay stage.
+    </p>
+
+    <!-- IMAGE PLACEHOLDER: System Architecture Block Diagram -->
+
+    <pre class="code-block">
+Sensing Layer → FSM (ESP32 Core 0) → Isolated Relay → Pump
+Diagnostics & Logging → ESP32 Core 1
+    </pre>
+</section>
+
+<!-- ================= WATER DETECTION ================= -->
+<section class="reveal">
+    <h2>3. Water Detection & Sensor Subsystems</h2>
+
+    <ul>
+        <li><strong>Electrode 1 (Source/Inlet):</strong> Prevents pump start without water.</li>
+        <li><strong>Electrode 2 (Flow Verification):</strong> Confirms real flow after pump start.</li>
+        <li><strong>Electrode 3 (Tank Full):</strong> Prevents overflow.</li>
+    </ul>
+
+    <p>
+        Each electrode uses an excitation-and-sense technique with ADC-based
+        threshold detection. Software debouncing and moving averages eliminate
+        noise from turbulence and EMI.
+    </p>
+
+    <!-- IMAGE PLACEHOLDER: Electrode Sensing Circuit Diagram -->
+</section>
+
+<!-- ================= FSM ================= -->
+<section class="reveal">
+    <h2>4. Control Logic & Finite State Machine</h2>
+
+    <ol>
+        <li><strong>STATE_WAITING_FOR_WATER:</strong> Requires stable source water.</li>
+        <li><strong>STATE_STARTUP_STABILIZATION:</strong> 3-minute source stabilization delay.</li>
+        <li><strong>STATE_PUMP_RUNNING:</strong> Active pumping with continuous validation.</li>
+        <li><strong>STATE_FAILURE_COOLDOWN:</strong> 20-minute enforced cooldown after faults.</li>
+    </ol>
+
+    <p>
+        The FSM is fully non-blocking and driven by <code>millis()</code>,
+        ensuring continuous responsiveness and fault detection.
+    </p>
+
+    <!-- IMAGE PLACEHOLDER: State Machine Flowchart -->
+</section>
+
+<!-- ================= SAFETY ================= -->
+<section class="reveal">
+    <h2>5. Safety & Protection Mechanisms</h2>
+    <ul>
+        <li>Two-stage dry-run protection with source + flow verification</li>
+        <li>Tank overflow prevention with confirmation delay</li>
+        <li>Mandatory cooldown to prevent rapid cycling</li>
+        <li>Reset-cause diagnostics for field troubleshooting</li>
+    </ul>
+</section>
+
+<!-- ================= FIRMWARE ================= -->
+<section class="reveal">
+    <h2>6. Firmware Architecture</h2>
+    <p>
+        Firmware is modular and industrial in structure, separating sensing,
+        logic, safety, I/O control, and diagnostics. The system is fully
+        offline-first and cloud-independent.
+    </p>
+
+    <!-- SOURCE CODE PLACEHOLDER -->
+</section>
+
+<!-- ================= INSTALLATION ================= -->
+<section class="reveal">
+    <h2>7. Installation & Field Deployment</h2>
+    <p>
+        The controller is housed in an IP66 enclosure with optically isolated
+        pump control. Electrode placement follows strict hydraulic and safety
+        guidelines for reliable detection.
+    </p>
+
+    <!-- IMAGE PLACEHOLDER: Field Deployment -->
+</section>
+
+<!-- ================= DEMO ================= -->
+<section class="reveal">
+    <h2>8. Demonstration Media</h2>
+    <!-- VIDEO PLACEHOLDER: Operational Demo -->
+</section>
+
+<!-- ================= PERFORMANCE ================= -->
+<section class="reveal">
+    <h2>9. Performance Outcomes & Reliability</h2>
+    <ul>
+        <li>Months of unattended autonomous operation</li>
+        <li>Significant reduction in pump failures</li>
+        <li>Designed for intermittent municipal water sources</li>
+        <li>Scalable to multi-pump or SCADA-integrated systems</li>
+    </ul>
+</section>
+
+<!-- ================= RESUME ================= -->
+<section class="reveal">
+    <h2>10. Resume-Optimized Technical Summary</h2>
+    <ul>
+        <li>Designed municipal-grade ESP32 pump automation with FSM safety logic</li>
+        <li>Implemented triple-electrode conductivity sensing</li>
+        <li>Developed non-blocking firmware for 24/7 reliability</li>
+        <li>Engineered isolated, EMI-resistant hardware for harsh environments</li>
+    </ul>
+</section>
+
+</main>
+
+<script src="../script.js"></script>
+</body>
+</html>
