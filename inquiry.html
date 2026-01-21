@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project Inquiry | MD Hashim</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <nav>
+        <h2>MD Hashim</h2>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="project-content">
+
+<!-- ================= HERO ================= -->
+<section class="reveal">
+    <h1>Project Inquiry</h1>
+    <p>
+        This form is intended for serious engineering projects, automation system
+        development, technical consultation, and custom control solutions.
+        Please provide clear information to enable a meaningful response.
+    </p>
+</section>
+
+<!-- ================= FORM ================= -->
+<section class="reveal delay-1">
+
+    <form 
+        action="https://formspree.io/f/xqeenvnj"
+        method="POST"
+        class="inquiry-form"
+    >
+
+        <!-- Honeypot (Spam Protection) -->
+        <input type="text" name="_gotcha" style="display:none">
+
+        <div class="form-grid">
+            <div>
+                <label for="name">Full Name *</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div>
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div>
+                <label for="organization">Organization / Client Name</label>
+                <input type="text" id="organization" name="organization">
+            </div>
+
+            <div>
+                <label for="location">Project Location</label>
+                <input type="text" id="location" name="location">
+            </div>
+        </div>
+
+        <div>
+            <label for="project_type">Project Type *</label>
+            <select id="project_type" name="project_type" required>
+                <option value="">Select one</option>
+                <option>Automation / Control System</option>
+                <option>Pump / Water System</option>
+                <option>Thermal / Heating System</option>
+                <option>Embedded System / ESP32 / Arduino</option>
+                <option>Machine Retrofit / CNC Conversion</option>
+                <option>Technical Consultation Only</option>
+                <option>Other</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Deployment Type</label>
+            <div class="radio-group">
+                <label><input type="radio" name="deployment" value="Residential"> Residential</label>
+                <label><input type="radio" name="deployment" value="Commercial"> Commercial</label>
+                <label><input type="radio" name="deployment" value="Industrial"> Industrial</label>
+                <label><input type="radio" name="deployment" value="Municipal"> Municipal</label>
+            </div>
+        </div>
+
+        <div>
+            <label for="description">Project Description *</label>
+            <textarea
+                id="description"
+                name="description"
+                rows="6"
+                placeholder="Describe the problem, current setup, and expected outcome."
+                required
+            ></textarea>
+        </div>
+
+        <div>
+            <label for="timeline">Expected Timeline</label>
+            <input type="text" id="timeline" name="timeline" placeholder="e.g., Immediate / 1–3 months / Flexible">
+        </div>
+
+        <div>
+            <label for="budget">Estimated Budget Range (Optional)</label>
+            <input type="text" id="budget" name="budget">
+        </div>
+
+        <button type="submit" class="primary-btn">
+            Submit Inquiry
+        </button>
+
+        <p class="form-note">
+            You will receive a response only if the inquiry aligns with current
+            technical scope and availability.
+        </p>
+
+    </form>
+
+</section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
