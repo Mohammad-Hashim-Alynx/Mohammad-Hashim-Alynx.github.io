@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Alynx BLE HID Gamepad | MD Hashim</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header>
+    <nav>
+        <h2>MD Hashim</h2>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="../resume.html">Resume</a></li>
+            <li><a href="../projects.html">Projects</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="reveal">
+    <h1>Alynx – ESP32-C6 BLE HID Gamepad Controller</h1>
+    <p>
+        Cross-platform, low-latency Bluetooth Low Energy (BLE) HID gamepad
+        designed for universal compatibility and reliable wireless input.
+    </p>
+</section>
+
+<section class="reveal">
+    <h2>Project Overview</h2>
+    <p>
+        Alynx is a standards-compliant BLE HID gamepad controller designed to
+        function as a native input device across Windows, Linux, macOS,
+        Android, and iOS without custom drivers. It addresses limitations
+        of proprietary or wired controllers by offering low latency,
+        low power consumption, and flexible firmware-based customization.
+    </p>
+    <p>
+        The controller implements the HID over GATT (HoG) profile, allowing
+        it to be instantly recognized by host operating systems as a
+        generic game controller suitable for gaming, robotics teleoperation,
+        media control, and accessibility interfaces.
+    </p>
+</section>
+
+<section class="reveal">
+    <h2>System Architecture</h2>
+    <p>
+        The system is built around the ESP32-C6 microcontroller, which provides
+        native Bluetooth 5.0 Low Energy support and efficient RISC-V processing.
+        Physical button inputs are sampled via GPIO, encoded into compact HID
+        input reports, and transmitted wirelessly to the host using BLE
+        notifications.
+    </p>
+
+    <!-- IMAGE PLACEHOLDER: Overall system block diagram -->
+</section>
+
+<section class="reveal">
+    <h2>Hardware Design & Input Subsystems</h2>
+
+    <h3>Button Input Design</h3>
+    <p>
+        Seven digital buttons are connected to ESP32-C6 GPIOs configured with
+        internal pull-up resistors. Buttons pull the input low when pressed.
+        Software debouncing ensures reliable state detection without false
+        triggers caused by mechanical bounce.
+    </p>
+
+    <h3>Status LED</h3>
+    <p>
+        A dedicated status LED provides immediate feedback for BLE states,
+        including advertising, active connection, input acknowledgment,
+        and potential low-battery warnings.
+    </p>
+
+    <h3>Power System</h3>
+    <p>
+        The controller is powered by a single-cell 3.7 V Li-Po battery regulated
+        to 3.3 V using an LDO. The design supports untethered operation and can
+        be expanded with onboard charging via a TP4056 module.
+    </p>
+
+    <!-- IMAGE PLACEHOLDER: Controller schematic / layout -->
+</section>
+
+<section class="reveal">
+    <h2>BLE HID Implementation</h2>
+    <p>
+        Alynx implements a fully compliant BLE HID device using the HID over
+        GATT profile. The controller advertises the Human Interface Device
+        service and exposes the required characteristics for HID information,
+        report mapping, control, and input reporting.
+    </p>
+    <p>
+        Input reports consist of a compact three-byte structure representing
+        seven digital buttons and two centered axes, minimizing BLE packet
+        overhead and ensuring low-latency input delivery.
+    </p>
+
+    <!-- IMAGE PLACEHOLDER: HID report structure / GATT table -->
+</section>
+
+<section class="reveal">
+    <h2>Firmware Architecture & Control Logic</h2>
+    <p>
+        Firmware is developed using ESP-IDF and follows an event-driven,
+        non-blocking architecture. GPIO scanning runs continuously, while
+        BLE events are handled via callback functions. Input reports are
+        transmitted only when a debounced state change is detected.
+    </p>
+    <p>
+        This change-only reporting strategy minimizes radio usage, reduces
+        power consumption, and ensures responsive input handling within
+        BLE connection interval limits.
+    </p>
+
+    <!-- SOURCE CODE PLACEHOLDER -->
+</section>
+
+<section class="reveal">
+    <h2>Power Management & Performance</h2>
+    <p>
+        In active BLE connection mode, the system typically consumes
+        8–15 mA depending on connection interval configuration. Event-driven
+        reporting keeps the radio idle when no inputs change, extending
+        battery life without sacrificing responsiveness.
+    </p>
+    <p>
+        BLE connection parameters can be tuned to balance latency and power
+        consumption, enabling sub-30 ms response times while maintaining
+        efficient energy usage.
+    </p>
+</section>
+
+<section class="reveal">
+    <h2>Installation & Pairing Workflow</h2>
+    <ul>
+        <li>Flash firmware using ESP-IDF via USB.</li>
+        <li>Power on the device to enter BLE advertising mode.</li>
+        <li>Pair with host OS via Bluetooth settings.</li>
+        <li>Controller is detected as a native gamepad device.</li>
+    </ul>
+
+    <!-- IMAGE PLACEHOLDER: Final assembled controller -->
+</section>
+
+<section class="reveal">
+    <h2>Demonstration Media</h2>
+    <!-- VIDEO PLACEHOLDER -->
+</section>
+
+<section class="reveal">
+    <h2>Applications & Use Cases</h2>
+    <ul>
+        <li>Gaming and emulation on PC, mobile, and SBC platforms</li>
+        <li>Robotics and RC teleoperation interfaces</li>
+        <li>Presentation and media control</li>
+        <li>Accessibility and assistive input systems</li>
+        <li>Smart home and automation triggers</li>
+    </ul>
+</section>
+
+<section class="reveal">
+    <h2>Technical Summary</h2>
+    <ul>
+        <li>Designed a production-grade BLE HID gamepad using ESP32-C6</li>
+        <li>Implemented full HID over GATT service architecture</li>
+        <li>Achieved low-latency, event-driven input reporting</li>
+        <li>Optimized power usage for battery-operated deployment</li>
+        <li>Validated cross-platform compatibility without custom drivers</li>
+    </ul>
+</section>
+
+<script src="../script.js"></script>
+</body>
+</html>
