@@ -64,6 +64,11 @@ nav a:hover::after {
     width: 100%;
 }
 
+/* Active page underline (persistent) */
+nav ul li a.active::after {
+    width: 100%;
+}
+
 /* ================= HERO ================= */
 /* Home page hero layout only */
 .home-header {
