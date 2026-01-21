@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Pool Water Quality Monitoring System | MD Hashim</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header>
+    <nav>
+        <h2>MD Hashim</h2>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="../resume.html">Resume</a></li>
+            <li><a href="../projects.html">Projects</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="reveal">
+    <h1>Advanced Smart Pool Water Quality Monitoring System</h1>
+    <p>
+        Production-grade IoT system for continuous, automated monitoring
+        and management of swimming pool water chemistry.
+    </p>
+</section>
+
+<section class="reveal">
+    <h2>Project Overview</h2>
+    <p>
+        This project is a production-grade IoT system designed to provide
+        continuous, real-time monitoring of swimming pool water quality.
+        It addresses the real-world challenges of inconsistent water chemistry,
+        excessive chemical usage, and labor-intensive manual testing commonly
+        found in residential and commercial pool maintenance.
+    </p>
+    <p>
+        Unlike periodic manual testing using strips or handheld meters,
+        the system delivers 24/7 sensor-driven data, precise chemical
+        adjustment calculations, and automated alerts. It eliminates guesswork,
+        reduces chemical waste, protects pool infrastructure, and ensures
+        a consistently safe and comfortable swimming environment.
+    </p>
+</section>
+
+<section class="reveal">
+    <h2>System Architecture</h2>
+    <p>
+        The system follows a layered, modular architecture centered around
+        an Arduino-based controller (Arduino Mega for expanded I/O capacity).
+        Dedicated sensor subsystems handle TDS/salinity, pH, and temperature,
+        each with appropriate signal conditioning and calibration logic.
+    </p>
+    <p>
+        Processed data is displayed locally, logged for long-term analysis,
+        and transmitted wirelessly for remote monitoring. The architecture
+        supports bidirectional data flow, enabling both local interaction
+        and cloud-based oversight.
+    </p>
+
+    <!-- IMAGE PLACEHOLDER: System Architecture Block Diagram -->
+</section>
+
+<section class="reveal">
+    <h2>Hardware & Sensor Subsystems</h2>
+
+    <h3>TDS / Salinity Sensing</h3>
+    <p>
+        An analog TDS sensor with stainless steel electrodes measures water
+        conductivity to estimate dissolved solids concentration. Because
+        conductivity varies with temperature, raw readings are compensated
+        using real-time temperature data to produce accurate ppm values,
+        critical for saltwater pool management.
+    </p>
+
+    <h3>pH Sensing</h3>
+    <p>
+        A combination pH electrode with a high-impedance amplifier board
+        provides stable voltage output for accurate pH measurement.
+        The system supports two-point calibration using standard buffer
+        solutions, with calibration coefficients stored in EEPROM to
+        compensate for probe drift over time.
+    </p>
+
+    <h3>Temperature Sensing</h3>
+    <p>
+        A waterproof DS18B20 digital temperature sensor provides water
+        temperature data used both for display and for compensating
+        electrochemical sensor readings. Its 1-Wire interface ensures
+        reliable operation with minimal wiring.
+    </p>
+
+    <h3>User Interface & Data Logging</h3>
+    <p>
+        A 16x2 I2C LCD displays real-time parameters and system messages.
+        A four-button tactile interface enables menu navigation, calibration,
+        and log access without a computer. A microSD card logs timestamped
+        sensor data in CSV format for long-term trend analysis.
+    </p>
+
+    <h3>Wireless Connectivity</h3>
+    <p>
+        An ESP8266 WiFi module provides TCP/IP connectivity for cloud
+        dashboards and NTP time synchronization, while an HC-05 Bluetooth
+        module offers local configuration and data access via smartphone.
+        Dual communication paths ensure operational flexibility and redundancy.
+    </p>
+
+    <!-- IMAGE PLACEHOLDER: Controller Wiring / Schematic -->
+</section>
+
+<section class="reveal">
+    <h2>Data Processing & Control Logic</h2>
+    <p>
+        The firmware is built around a non-blocking finite state machine (FSM)
+        that manages monitoring, menu navigation, calibration routines, and
+        log viewing without halting system operation.
+    </p>
+    <p>
+        Sensor data is sampled at fixed intervals using millis()-based timing,
+        filtered using moving averages, validated against physical limits,
+        and compensated for temperature effects before being displayed,
+        logged, or transmitted.
+    </p>
+
+    <!-- IMAGE PLACEHOLDER: Software State Machine Diagram -->
+</section>
+
+<section class="reveal">
+    <h2>Chemical Calculation Engine</h2>
+    <p>
+        The system translates raw sensor data into actionable maintenance
+        instructions. For saltwater pools, it calculates the exact mass
+        of salt required based on current salinity, target salinity,
+        and configured pool volume.
+    </p>
+    <p>
+        pH adjustment logic estimates the quantity of acid or base needed
+        to reach target pH levels, warning users to apply chemicals gradually.
+        This precision prevents chemical over-dosing, infrastructure damage,
+        and unsafe swimming conditions.
+    </p>
+</section>
+
+<section class="reveal">
+    <h2>Firmware Architecture & Reliability</h2>
+    <p>
+        The firmware is modular and maintainable, with dedicated modules
+        for sensors, calculations, storage, communication, and user interface.
+        Calibration data and system configuration are preserved in EEPROM,
+        while SD card logging provides long-term historical records.
+    </p>
+    <p>
+        Watchdog timers, sensor validation checks, and fail-safe defaults
+        ensure stable 24/7 operation even under partial hardware or
+        communication failures.
+    </p>
+
+    <!-- SOURCE CODE PLACEHOLDER -->
+</section>
+
+<section class="reveal">
+    <h2>Safety, Reliability & Fail-Safe Design</h2>
+    <ul>
+        <li>Continuous sensor validation to detect probe faults</li>
+        <li>Fail-safe defaults preventing unsafe chemical recommendations</li>
+        <li>Weatherproof enclosure suitable for pool-side installation</li>
+        <li>Electrical isolation between sensing electronics and equipment</li>
+        <li>Designed as advisory system, not autonomous chemical dosing</li>
+    </ul>
+</section>
+
+<section class="reveal">
+    <h2>Performance Outcomes & Impact</h2>
+    <ul>
+        <li>Eliminated daily manual water testing requirements</li>
+        <li>Maintained tight pH and salinity control bands</li>
+        <li>Reduced chemical consumption by approximately 20–30%</li>
+        <li>Enabled 24/7 unattended monitoring with early fault alerts</li>
+        <li>Converted raw data into clear, actionable maintenance guidance</li>
+    </ul>
+
+    <!-- IMAGE PLACEHOLDER: System in Operation -->
+    <!-- VIDEO PLACEHOLDER: Operational Demonstration -->
+</section>
+
+<section class="reveal">
+    <h2>Technical Summary</h2>
+    <ul>
+        <li>Designed and implemented an IoT-based smart pool monitoring system
+            integrating TDS, pH, and temperature sensing.</li>
+        <li>Engineered a chemical calculation engine translating sensor data
+            into precise dosing recommendations.</li>
+        <li>Developed non-blocking, FSM-driven firmware with calibration,
+            EEPROM configuration storage, and SD card logging.</li>
+        <li>Integrated WiFi and Bluetooth connectivity for local and remote
+            monitoring.</li>
+        <li>Delivered a reliable, field-deployable solution validated through
+            long-term residential pool operation.</li>
+    </ul>
+</section>
+
+<section class="reveal">
+    <h2>System Images</h2>
+    <!-- IMAGE PLACEHOLDER -->
+</section>
+
+<section class="reveal">
+    <h2>Diagrams & Schematics</h2>
+    <!-- DIAGRAM PLACEHOLDER -->
+</section>
+
+<section class="reveal">
+    <h2>Source Code & Documentation</h2>
+    <!-- LINK PLACEHOLDER -->
+</section>
+
+<script src="../script.js"></script>
+</body>
+</html>
