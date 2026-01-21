@@ -1,55 +1,87 @@
 <section class="reveal">
-    <h2>Request Engineering Assistance</h2>
+    <h2>Project Inquiry / Engineering Assistance</h2>
     <p>
-        Use the form below if you need help designing, upgrading, or reviewing
-        an automation, control, or embedded system.
+        Use this form to request professional assistance with automation,
+        control systems, embedded firmware, or machine retrofitting.
+        Please provide clear technical details to enable a meaningful response.
     </p>
 
-    <form action="https://formspree.io/f/xxxxxxxx" method="POST" class="contact-form">
-        
-        <label>Name *</label>
-        <input type="text" name="name" required>
+    <form
+        action="https://formspree.io/f/xxxxxxxx"
+        method="POST"
+        class="inquiry-form"
+    >
 
-        <label>Email *</label>
-        <input type="email" name="email" required>
+        <!-- Redirect after submission -->
+        <input type="hidden" name="_redirect"
+               value="https://mohammad-hashim-alynx.github.io/inquiry-success.html">
 
-        <label>Organization / Individual</label>
-        <input type="text" name="organization">
+        <!-- Honeypot (spam protection) -->
+        <input type="text" name="_gotcha" style="display:none">
 
-        <label>Type of Request</label>
-        <select name="request_type">
+        <label for="name">Full Name *</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email Address *</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="organization">Organization / Individual</label>
+        <input type="text" id="organization" name="organization">
+
+        <label for="request_type">Type of Request</label>
+        <select id="request_type" name="request_type">
             <option>Automation System Design</option>
             <option>Pump / Water System</option>
-            <option>Embedded Firmware</option>
-            <option>Retrofit / Upgrade</option>
+            <option>Embedded Firmware (ESP32 / Arduino)</option>
+            <option>Machine Retrofit / Upgrade</option>
             <option>Technical Consultation</option>
         </select>
 
-        <label>System Description *</label>
-        <textarea name="description" rows="5" required></textarea>
+        <label for="description">System Description *</label>
+        <textarea
+            id="description"
+            name="description"
+            rows="5"
+            required
+            placeholder="Describe the problem, current setup, and constraints."
+        ></textarea>
 
-        <label>Deployment Environment</label>
-        <select name="environment">
+        <label for="environment">Deployment Environment</label>
+        <select id="environment" name="environment">
             <option>Residential</option>
             <option>Commercial</option>
             <option>Industrial</option>
             <option>Municipal / Utility</option>
         </select>
 
-        <label>Current Status</label>
-        <select name="status">
+        <label for="status">Current System Status</label>
+        <select id="status" name="status">
             <option>Concept only</option>
             <option>Existing system with issues</option>
             <option>Prototype built</option>
             <option>Field-deployed system</option>
         </select>
 
-        <label>Expected Outcome</label>
-        <textarea name="outcome" rows="4"></textarea>
+        <label for="outcome">Expected Outcome</label>
+        <textarea
+            id="outcome"
+            name="outcome"
+            rows="4"
+            placeholder="What result are you expecting?"
+        ></textarea>
 
-        <label>Timeline (optional)</label>
-        <input type="text" name="timeline">
+        <label for="timeline">Expected Timeline (optional)</label>
+        <input type="text" id="timeline" name="timeline"
+               placeholder="Immediate / 1–3 months / Flexible">
 
-        <button type="submit">Submit Request</button>
+        <button type="submit" class="primary-btn">
+            Submit Inquiry
+        </button>
+
+        <p class="form-note">
+            You will be contacted only if the request aligns with
+            current technical scope and availability.
+        </p>
+
     </form>
 </section>

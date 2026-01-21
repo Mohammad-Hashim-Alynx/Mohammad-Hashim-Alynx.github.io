@@ -20,6 +20,7 @@ body {
 }
 
 /* ================= NAVBAR ================= */
+/* ================= NAVBAR ================= */
 nav {
     display: flex;
     justify-content: space-between;
@@ -36,35 +37,40 @@ nav h2 {
     color: var(--accent);
 }
 
+/* Navigation list layout */
 nav ul {
     list-style: none;
     display: flex;
     gap: 30px;
 }
 
-nav a {
+nav ul li {
+    display: inline-block;
+}
+
+/* Nav links */
+nav ul li a {
+    position: relative;
+    padding-bottom: 6px;
     text-decoration: none;
     color: var(--text-main);
     font-weight: 500;
-    position: relative;
 }
 
-nav a::after {
-    content: '';
+/* Underline base */
+nav ul li a::after {
+    content: "";
     position: absolute;
-    width: 0;
-    height: 2px;
     left: 0;
-    bottom: -6px;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
     background-color: var(--accent);
     transition: width 0.3s ease;
 }
 
-nav a:hover::after {
-    width: 100%;
-}
-
-/* Active page underline (persistent) */
+/* Hover + Active (persistent underline) */
+nav ul li a:hover::after,
 nav ul li a.active::after {
     width: 100%;
 }
