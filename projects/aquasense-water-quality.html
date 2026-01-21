@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AquaSense™ – Smart TDS & Water Quality Optimization System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header class="project-header">
+    <nav>
+        <h2>MD Hashim</h2>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../projects.html">Projects</a></li>
+        </ul>
+    </nav>
+
+    <section class="project-hero">
+        <h1>AquaSense™</h1>
+        <h3>Smart TDS & Water Quality Optimization System</h3>
+        <p>
+            Closed-loop mineral optimization system transforming conventional
+            RO purifiers into intelligent, adaptive water quality platforms.
+        </p>
+    </section>
+</header>
+
+<main class="project-content">
+
+<!-- ================= PROJECT OVERVIEW ================= -->
+<section class="reveal">
+    <h2>1. Project Overview</h2>
+    <p>
+        AquaSense™ is a closed-loop control system designed to solve the
+        over-purification and inconsistent remineralization problems inherent
+        in conventional RO water purifiers. Traditional RO systems strip water
+        of both contaminants and beneficial minerals, while fixed-ratio
+        remineralization methods fail to adapt to changing inlet water quality.
+    </p>
+    <p>
+        AquaSense™ continuously measures inlet and outlet water quality and
+        dynamically adjusts a mineral mixing valve to maintain a precise,
+        user-defined target TDS. This ensures consistent taste, mineral balance,
+        and safety regardless of source water variability.
+    </p>
+</section>
+
+<!-- ================= SYSTEM ARCHITECTURE ================= -->
+<section class="reveal">
+    <h2>2. System Architecture</h2>
+    <p>
+        The system is built around an ESP32 microcontroller and follows a
+        modular, fault-tolerant architecture. Sensing, processing, actuation,
+        and user interface layers are cleanly separated to ensure reliability
+        and maintainability.
+    </p>
+
+    <!-- IMAGE PLACEHOLDER: System Integration Block Diagram -->
+
+    <pre class="code-block">
+Sensing → PID Control (ESP32 Core 0) → Mixing Valve / Solenoid
+UI & Web Server (ESP32 Core 1) → Monitoring & Configuration
+    </pre>
+</section>
+
+<!-- ================= SENSING ================= -->
+<section class="reveal">
+    <h2>3. Sensing & Measurement Subsystems</h2>
+
+    <ul>
+        <li><strong>Dual TDS Sensors:</strong> Inlet and outlet conductivity measurement</li>
+        <li><strong>Temperature Sensor:</strong> DS18B20 for TDS compensation</li>
+        <li><strong>Flow Sensor:</strong> Hall-effect sensor for control gating</li>
+    </ul>
+
+    <p>
+        All analog signals are filtered and temperature compensated. Sensor
+        values are validated against physical limits to detect faults such as
+        probe disconnection or electrical noise.
+    </p>
+
+    <!-- IMAGE PLACEHOLDER: Sensor Signal Conditioning Circuit -->
+</section>
+
+<!-- ================= CONTROL LOGIC ================= -->
+<section class="reveal">
+    <h2>4. Closed-Loop Control & Optimization</h2>
+    <p>
+        AquaSense™ uses a PID-based feedback control loop where the outlet TDS
+        is the process variable and the user-defined TDS is the setpoint. A
+        motorized mixing valve adjusts the ratio of mineralized and pure RO
+        water in real time.
+    </p>
+
+    <ul>
+        <li>Deadband to prevent actuator hunting</li>
+        <li>Integral anti-windup to avoid control lock</li>
+        <li>Flow-gated control to prevent idle correction</li>
+    </ul>
+
+    <!-- IMAGE PLACEHOLDER: Closed-Loop Control Diagram -->
+</section>
+
+<!-- ================= SAFETY ================= -->
+<section class="reveal">
+    <h2>5. Safety, Reliability & Fail-Safe Design</h2>
+    <ul>
+        <li>Sensor plausibility and cross-validation checks</li>
+        <li>Automatic bypass to pure RO water on fault</li>
+        <li>Watchdog timers and startup self-test</li>
+        <li>Persistent configuration storage</li>
+    </ul>
+</section>
+
+<!-- ================= FIRMWARE ================= -->
+<section class="reveal">
+    <h2>6. Firmware Architecture</h2>
+    <p>
+        The firmware is modular and real-time safe. Control logic runs on a
+        deterministic schedule independent of the web interface. All safety
+        decisions are executed locally.
+    </p>
+
+    <!-- SOURCE CODE PLACEHOLDER -->
+</section>
+
+<!-- ================= INSTALLATION ================= -->
+<section class="reveal">
+    <h2>7. Installation & RO Integration</h2>
+    <p>
+        AquaSense™ integrates non-invasively into standard RO systems between
+        the storage tank and the faucet. Plumbing includes a controlled mineral
+        mixing path and a normally-closed bypass for safety.
+    </p>
+
+    <!-- IMAGE PLACEHOLDER: Physical Installation -->
+</section>
+
+<!-- ================= DEMO ================= -->
+<section class="reveal">
+    <h2>8. Demonstration Media</h2>
+    <!-- VIDEO PLACEHOLDER: Control Demonstration -->
+</section>
+
+<!-- ================= PERFORMANCE ================= -->
+<section class="reveal">
+    <h2>9. Performance Outcomes & Impact</h2>
+    <ul>
+        <li>Consistent outlet TDS within ±5 ppm</li>
+        <li>Improved taste and mineral balance</li>
+        <li>Elimination of manual tuning</li>
+        <li>Predictive maintenance insights</li>
+    </ul>
+</section>
+
+<!-- ================= RESUME ================= -->
+<section class="reveal">
+    <h2>10. Resume-Optimized Technical Summary</h2>
+    <ul>
+        <li>Designed closed-loop RO mineral optimization using ESP32</li>
+        <li>Implemented PID-based TDS control with dual-sensor feedback</li>
+        <li>Engineered safety-first failover to pure RO water</li>
+        <li>Developed modular firmware with web-based monitoring</li>
+    </ul>
+</section>
+
+</main>
+
+<script src="../script.js"></script>
+</body>
+</html>
