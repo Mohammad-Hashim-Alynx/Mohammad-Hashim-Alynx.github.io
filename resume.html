@@ -169,11 +169,15 @@
             font-size: 1.1rem;
         }
         
-        /* Contact Footer Styles */
+        /* Contact Footer Styles - FULL WIDTH */
         #contact {
             margin-top: 80px;
-            padding: 60px 0;
+            padding: 60px 20px;
             border-top: 1px solid rgba(250, 204, 21, 0.1);
+            background: var(--bg-primary);
+            width: 100%;
+            max-width: 100vw;
+            box-sizing: border-box;
         }
         
         #contact h2 {
@@ -187,8 +191,9 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 0 20px;
         }
         
         .contact-container .contact-item {
@@ -257,7 +262,7 @@
             
             #contact {
                 margin-top: 60px;
-                padding: 40px 0;
+                padding: 40px 15px;
             }
             
             #contact h2 {
@@ -268,7 +273,7 @@
             .contact-container {
                 grid-template-columns: 1fr;
                 gap: 20px;
-                padding: 0 20px;
+                padding: 0 15px;
             }
             
             .contact-container .contact-item {
@@ -490,7 +495,9 @@
     </div>
 </section>
 
-<!-- ================= CONTACT FOOTER ================= -->
+</main>
+
+<!-- ================= CONTACT FOOTER (FULL WIDTH) ================= -->
 <section id="contact" class="reveal">
     <h2>Contact</h2>
     
@@ -524,8 +531,6 @@
         </div>
     </div>
 </section>
-
-</main>
 
 <script src="script.js"></script>
 </body>
