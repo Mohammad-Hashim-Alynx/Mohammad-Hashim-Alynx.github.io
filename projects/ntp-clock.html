@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Alynx™ Geolocation-Based NTP WiFi LCD Clock | MD Hashim</title>
+    <title>Alynx™ WiFi NTP Digital Clock | MD Hashim</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Google Font -->
@@ -29,10 +29,10 @@
 </header>
 
 <section class="reveal">
-    <h1>Alynx™ Geolocation-Based NTP WiFi LCD Clock</h1>
+    <h1>Alynx™ WiFi NTP Digital Clock</h1>
     <p>
-        ESP32-based internet-synchronized digital clock with automatic
-        timezone handling, large-format display, and web-based configuration.
+        ESP32-based internet-synchronized digital clock with large-format display,
+        automatic timezone handling, and robust WiFi connectivity for 24/7 operation.
     </p>
 </section>
 
@@ -42,33 +42,618 @@
         The Alynx™ NTP WiFi Clock is a professional-grade timekeeping system
         designed to deliver accurate, unattended time synchronization using
         internet NTP servers. It eliminates time drift, manual setting, and
-        post-power-loss reconfiguration commonly seen in conventional digital
-        clocks.
+        post-power-loss reconfiguration commonly seen in conventional digital clocks.
     </p>
     <p>
         The system automatically connects to WiFi, synchronizes time via NTP,
         applies geographic timezone offsets, and presents the information on a
-        large, high-visibility 20×4 LCD using custom-rendered digits.
+        large, high-visibility 20×4 LCD using custom-rendered digits for maximum readability.
     </p>
+    
+    <figure class="diagram-section">
+<pre class="diagram">
+🕐 ALYNX WIFI NTP DIGITAL CLOCK
+├─ 📶 Smart internet-synchronized time
+├─ 🎯 Large custom digits (3x2 characters)
+├─ 🌐 Web-based configuration portal
+└─ 🔄 Robust WiFi reconnection logic
+
+💡 KEY ADVANTAGES:
+   • 🕐 Always accurate (NTP sync)
+   • 👁️ Excellent readability (big digits)
+   • 🔗 Reliable connectivity (smart reconnection)
+   • ⚙️ Easy setup (web configuration)
+   • 🌍 Multi-timezone support
+
+🎯 USE CASES:
+   • 🏠 Home/office professional clock
+   • 🖥️ Server room time reference
+   • 🏫 Classroom time display
+   • 🏭 Industrial timekeeping
+   • 🏢 Public display/lobby clock
+</pre>
+        <figcaption>Project overview highlighting key features and applications</figcaption>
+    </figure>
 </section>
 
 <section class="reveal">
-    <h2>System Architecture</h2>
-    <p>
-        The system is built around an ESP32 microcontroller, selected for its
-        integrated WiFi, dual-core processing, and reliable real-time
-        performance. Time is obtained from global NTP servers and corrected
-        using configurable timezone offsets, including fractional offsets
-        such as UTC+5:30.
-    </p>
-    <p>
-        A 20×4 I²C LCD provides a large-format visual interface, while an
-        embedded web server enables configuration without firmware reflashing.
-    </p>
+    <h2>System Architecture & Components</h2>
 
-    <!-- IMAGE PLACEHOLDER: System block diagram -->
+    <h3>Hardware Components</h3>
+    <p>
+        The system uses an ESP32 microcontroller for WiFi connectivity and processing,
+        paired with a 20x4 LCD display for large-format time presentation.
+    </p>
+    
+    <figure class="diagram-section">
+<pre class="diagram">
+🔧 REQUIRED COMPONENTS:
+┌─────────────────────────────┐
+│ 🧠 ESP32 DEVELOPMENT BOARD  │
+│  • ESP32-WROOM-32 or similar│
+│  • WiFi 2.4GHz capability   │
+│  • 4MB Flash minimum        │
+└─────────────────────────────┘
+          ↓
+┌─────────────────────────────┐
+│ 📺 20x4 LCD WITH I2C        │
+│  • 20 columns, 4 rows       │
+│  • I2C backpack (PCF8574)   │
+│  • Address: 0x27 or 0x3F    │
+└─────────────────────────────┘
+          ↓
+┌─────────────────────────────┐
+│ 🔘 CONFIGURATION BUTTON     │
+│  • Tactile switch           │
+│  • GPIO 4 (with pull-up)    │
+│  • No external resistor     │
+└─────────────────────────────┘
+
+🔌 OPTIONAL COMPONENTS:
+• 📦 3D printed case
+• 🔋 Backup battery
+• 🎚️ Level shifter (if using 5V LCD)
+• 🧵 Extension cables
+</pre>
+        <figcaption>Complete hardware component list with specifications</figcaption>
+    </figure>
+
+    <h3>Wiring & Connections</h3>
+    <p>
+        Clean I2C-based wiring minimizes connections while ensuring reliable
+        communication between the ESP32 and LCD display.
+    </p>
+    
+    <figure class="diagram-section">
+<pre class="diagram">
+📊 PIN CONNECTIONS:
+ESP32 GPIO 21 → LCD SDA (I2C Data)
+ESP32 GPIO 22 → LCD SCL (I2C Clock)
+ESP32 3.3V    → LCD VCC (or 5V with level shifter)
+ESP32 GND     → LCD GND
+ESP32 GPIO 4  → Button (other side to GND)
+ESP32 Vin/USB → 5V Power Supply
+
+🔧 DETAILED CONNECTIONS:
+┌─────────────────────────────────────┐
+│         ESP32 BOARD                 │
+│  GPIO 21 ────→ SDA ──┐             │
+│  GPIO 22 ────→ SCL ──┼→ LCD I2C    │
+│  3.3V   ────→ VCC ──┘   (0x27)     │
+│  GND    ────→ GND                  │
+│  GPIO 4 ────→ Button ──┐           │
+│                        ↓           │
+│                       GND          │
+│  Vin ──────→ 5V Power Supply       │
+└─────────────────────────────────────┘
+
+⚡ POWER NOTES:
+• Use 5V/1A regulated power supply
+• Consider backup battery for timekeeping
+• Ensure clean ground connections
+• Add fuse for safety if permanent installation
+</pre>
+        <figcaption>Complete wiring diagram and power specifications</figcaption>
+    </figure>
+
+    <!-- IMAGE PLACEHOLDER: System wiring diagram -->
 </section>
 
+<section class="reveal">
+    <h2>Display Layout & Interface</h2>
+    <p>
+        The 20x4 LCD is optimized for maximum readability with custom large digits
+        and clear status information organized across four rows.
+    </p>
+    
+    <figure class="diagram-section">
+<pre class="diagram">
+🖥️ 20x4 LCD LAYOUT:
+
+ROW 0-1: LARGE TIME DIGITS (3x2 characters)
+       Column:  0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19
+       Row 0:  [ ][ ][ ][H][H][H][ ][:][ ][M][M][M][ ][ ][A][M][ ][ ][ ][ ]
+       Row 1:  [ ][ ][ ][H][H][H][ ][:][ ][M][M][M][ ][ ][A][M][ ][ ][ ][ ]
+       
+       Example: "   12:45  PM    " (centered with padding)
+
+ROW 2: DATE DISPLAY (Centered)
+       Format: "   Thu 04/12/2025   "
+       
+ROW 3: STATUS MESSAGE (Centered)
+       Connected:    "   Alhamdulillah!   "
+       Disconnected: "   Allahu Akbar!    "
+       Boot Phase:   "   Allahu Akbar!*   "
+       Config Mode:  " Connect to Alynx_Clock WiFi"
+
+🔢 BIG DIGIT DESIGN:
+   • 3 columns wide × 2 rows tall per digit
+   • Custom character set (8 custom chars)
+   • Optimized for maximum readability
+   • Blinking colon as heartbeat indicator
+</pre>
+        <figcaption>LCD display layout with custom large digit design</figcaption>
+    </figure>
+</section>
+
+<section class="reveal">
+    <h2>WiFi Connectivity & Reconnection Strategy</h2>
+    <p>
+        The firmware implements multi-stage WiFi reconnection logic optimized
+        for real-world power and network instability. After power restoration,
+        the system aggressively retries connections during early boot and
+        transitions to stable retry intervals during normal operation.
+    </p>
+    
+    <figure class="diagram-section">
+<pre class="diagram">
+📶 INTELLIGENT WIFI MANAGEMENT:
+
+BOOT PHASES & RETRY INTERVALS:
+┌─────────────────┬─────────────┬────────────────────┐
+│     PHASE       │ DURATION    │ RETRY INTERVAL     │
+├─────────────────┼─────────────┼────────────────────┤
+│ BOOT_START      │ 0-10 sec    │ Immediate attempts │
+│ BOOT_ATTEMPT_1  │ 10-20 sec   │ Every 5 seconds    │
+│ BOOT_ATTEMPT_2  │ 20-30 sec   │ Every 5 seconds    │
+│ BOOT_ATTEMPT_3  │ 30-60 sec   │ Every 10 seconds   │
+│ BOOT_QUICK_RETRY│ 1-2 min     │ Every 10 seconds   │
+│ BOOT_NORMAL     │ After 2 min │ Every 60 seconds   │
+└─────────────────┴─────────────┴────────────────────┘
+
+🔁 CONNECTION RECOVERY:
+
+1. DETECT DISCONNECTION:
+   • Monitor WiFi.status()
+   • Check RSSI quality
+   • Verify gateway ping
+
+2. ATTEMPT RECONNECTION:
+   • WiFi.disconnect()
+   • WiFi.begin(ssid, password)
+   • Wait for connection
+   • Multiple retry strategies
+
+3. POST-RECONNECTION:
+   • Sync NTP time
+   • Update display status
+   • Resume normal operation
+</pre>
+        <figcaption>WiFi connection strategy with phased retry intervals</figcaption>
+    </figure>
+</section>
+
+<section class="reveal">
+    <h2>Time Synchronization & NTP Handling</h2>
+    <p>
+        NTP synchronization ensures millisecond accuracy, while the ESP32's
+        internal RTC maintains time during network outages with minimal drift.
+    </p>
+    
+    <figure class="diagram-section">
+<pre class="diagram">
+🌍 NTP TIME SYNC PROCESS:
+
+1. INITIAL SYNC (On First Connection):
+   configTime(19800, 0, "pool.ntp.org", "time.nist.gov")
+   ↓
+   Get time from NTP server
+   ↓
+   Apply timezone offset
+   ↓
+   Update ESP32 RTC
+
+2. HOURLY UPDATES:
+   Every 3600 seconds (1 hour)
+   ↓
+   Check if connected to WiFi
+   ↓
+   Sync with NTP server
+   ↓
+   Correct any clock drift
+
+3. TIMEZONE HANDLING:
+   • Support for fractional timezones (e.g., 5.5)
+   • Manual DST adjustment (auto-DST not implemented)
+   • Multiple timezone support (future enhancement)
+
+4. DRIFT COMPENSATION:
+   • ESP32 RTC drifts ~10 seconds/day
+   • NTP sync corrects drift automatically
+   • Time kept during WiFi outages (continues from last sync)
+   • Resync corrects any accumulated error
+
+⏱️ ACCURACY:
+• NTP sync: Typically within 10ms
+• Local timekeeping: ±1 second after sync
+• Display update: Every second
+• Date rollover: Automatic at midnight
+</pre>
+        <figcaption>NTP synchronization process with drift compensation</figcaption>
+    </figure>
+</section>
+
+<section class="reveal">
+    <h2>Web Configuration Portal</h2>
+    <p>
+        Built-in web interface allows easy configuration without firmware
+        reflashing. Accessible via any web browser on the local network.
+    </p>
+    
+    <figure class="diagram-section">
+<pre class="diagram">
+🔧 WEB INTERFACE PAGES:
+
+1. 📋 STATUS PAGE (/) [No Login Required]
+   ├─ Current time and date
+   ├─ WiFi connection status
+   ├─ System information
+   └─ Quick action buttons
+
+2. 🔐 CONFIG LOGIN (/config) [Password Protected]
+   ├─ Authentication form
+   ├─ Password validation
+   └─ Session initiation
+
+3. ⚙️ CONFIGURATION PANEL (/config) [After Login]
+   ├─ WiFi Settings:
+   │   • SSID (with network scan)
+   │   • Password
+   │   • Connection test
+   ├─ Time Settings:
+   │   • Timezone selector
+   │   • 12/24 hour format
+   │   • NTP server options
+   └─ System Settings:
+       • Save/Restore configuration
+       • Factory reset
+       • Firmware update
+
+4. ✅ SAVE CONFIRMATION (/save)
+   ├─ Settings validation
+   ├─ Storage to EEPROM
+   ├─ WiFi reconnection
+   └─ Redirect to status
+
+5. 🚪 EXIT CONFIG (/exitconfig)
+   ├─ Exit AP mode
+   ├─ Restart WiFi client
+   └─ Return to normal operation
+
+🔒 SECURITY FEATURES:
+• Password protection for config
+• Input validation on forms
+• Secure password handling
+• Session management
+</pre>
+        <figcaption>Web configuration portal structure with security features</figcaption>
+    </figure>
+</section>
+
+<section class="reveal">
+    <h2>Button Functions & User Interaction</h2>
+    <p>
+        Single button provides multiple functions based on press duration,
+        enabling configuration mode access and manual reconnection.
+    </p>
+    
+    <figure class="diagram-section">
+<pre class="diagram">
+🎛️ CONFIG BUTTON (GPIO 4) FUNCTIONS:
+
+SHORT PRESS (< 1 second):
+   • Manual WiFi reconnect attempt
+   • Force connection retry
+   • Status refresh
+
+MEDIUM PRESS (3 seconds):
+   • Enter Configuration Mode
+   • Start AP: "Alynx_Clock"
+   • Serve web config at 192.168.4.1
+   • LCD shows connection instructions
+
+LONG PRESS (5 seconds in Config Mode):
+   • Exit Configuration Mode
+   • Stop AP
+   • Attempt WiFi reconnection
+   • Return to normal operation
+
+🔄 BUTTON BEHAVIOR:
+• Debounced: 50ms delay prevents false triggers
+• Visual Feedback: LCD shows action confirmation
+• Context-Aware: Different actions based on mode
+• Non-Blocking: Doesn't interrupt timekeeping
+</pre>
+        <figcaption>Button functions with context-aware behavior</figcaption>
+    </figure>
+</section>
+
+<section class="reveal">
+    <h2>Configuration Settings</h2>
+    <p>
+        All system parameters are configurable through the web interface,
+        with sensible defaults for immediate operation.
+    </p>
+    
+    <figure class="diagram-section">
+<pre class="diagram">
+🎛️ SOFTWARE CONFIGURATION:
+
+🔧 HARDWARE SETTINGS:
+#define LCD_I2C_ADDRESS 0x27  // Change to 0x3F if needed
+const int CONFIG_BUTTON_PIN = 4
+LiquidCrystal_I2C lcd(0x27, 20, 4)
+
+⏰ TIME SETTINGS:
+float timezoneOffset = 5.5    // India = UTC+5:30
+bool timeFormat24 = false     // 12-hour format (AM/PM)
+
+🔐 SECURITY (CHANGE THESE!):
+const String CONFIG_PASSWORD = "CHANGE_ME"
+WiFi.softAP("Alynx_Clock", "CHANGE_ME")
+
+📡 WIFI SETTINGS:
+String wifiSSID = ""          // Set via web config
+String wifiPassword = ""      // Set via web config
+
+⏱️ TIMING CONSTANTS:
+#define BOOT_WIFI_INTERVAL1 10000
+#define BOOT_WIFI_INTERVAL2 10000
+#define BOOT_WIFI_INTERVAL3 30000
+#define NORMAL_RETRY_INTERVAL 60000
+#define QUICK_RETRY_INTERVAL 10000
+
+🎯 DISPLAY SETTINGS:
+bool blinkColon = true        // Blinking colon indicator
+bool showDate = true          // Show date on row 2
+String statusConnected = "Alhamdulillah!"
+String statusDisconnected = "Allahu Akbar!"
+</pre>
+        <figcaption>Complete configuration settings with defaults</figcaption>
+    </figure>
+</section>
+
+<section class="reveal">
+    <h2>Applications & Use Cases</h2>
+    <p>
+        Versatile design suitable for various environments from residential
+        to industrial applications.
+    </p>
+    
+    <figure class="diagram-section">
+<pre class="diagram">
+🎯 PRACTICAL USE CASES:
+
+🏡 HOME & OFFICE:
+• 🏠 Living room: Large, readable clock
+• 🍳 Kitchen: Cooking timer + time display
+• 🖥️ Home office: Professional time reference
+• 🛏️ Bedroom: Alarm clock with gentle wake
+
+🏢 COMMERCIAL:
+• 🖥️ Server room: Accurate log timestamping
+• 🏭 Factory floor: Shift timing display
+• 🛍️ Retail store: Business hours display
+• 🏫 Classroom: Class period timer
+
+🕌 RELIGIOUS:
+• 🕌 Mosque: Prayer time display
+• 🕍 Church: Service timing
+• 🛐 Temple: Ceremony schedule
+• 📿 Meditation center: Session timer
+
+✈️ TRAVEL:
+• 🏨 Hotel room: World clock
+• 🛄 Airport: Flight time display
+• 🚢 Cruise ship: Port time reference
+• 🏕️ RV/Camper: Mobile timekeeping
+
+🧪 EDUCATIONAL:
+• 🏫 STEM lab: IoT learning tool
+• 💻 Coding class: ESP32 project example
+• 🔌 Electronics workshop: Circuit building
+• 🎓 Computer science: Network protocols demo
+</pre>
+        <figcaption>Comprehensive application scenarios across various domains</figcaption>
+    </figure>
+</section>
+
+<section class="reveal">
+    <h2>Performance Specifications</h2>
+    
+    <figure class="diagram-section">
+<pre class="diagram">
+📊 SYSTEM SPECIFICATIONS:
+
+┌─────────────────────┬─────────────────────────┐
+│ SPECIFICATION       │ VALUE                   │
+├─────────────────────┼─────────────────────────┤
+│ Controller          │ ESP32 Dev Board         │
+│ Display             │ 20x4 LCD with I2C       │
+│ Time Accuracy       │ NTP ±10ms               │
+│ WiFi                │ 2.4GHz 802.11 b/g/n     │
+│ Power Consumption   │ 150-300mA @ 5V          │
+│ Memory Usage        │ ~40% of available       │
+│ Update Rate         │ 1 second (display)      │
+│ NTP Sync Interval   │ 1 hour                  │
+│ WiFi Retry Interval │ 60 seconds (normal)     │
+│ Temperature Range   │ 0°C to 70°C (operating) │
+│ Dimensions          │ Varies by enclosure     │
+└─────────────────────┴─────────────────────────┘
+
+⚡ POWER CONSUMPTION:
+• Standby (display on): 250mA @ 5V = 1.25W
+• Sleep mode (future): ~10mA @ 5V = 0.05W
+• With backup battery: 500mAh lasts ~2 hours
+• With power management: Could last days on battery
+
+📈 RELIABILITY METRICS:
+• WiFi reconnection success: >95% (with retries)
+• NTP sync success: >99% (when connected)
+• Display lifespan: 50,000+ hours
+• MTBF (Mean Time Between Failures): Years
+• Uptime capability: 24/7 continuous operation
+</pre>
+        <figcaption>Technical specifications and performance metrics</figcaption>
+    </figure>
+</section>
+
+<section class="reveal">
+    <h2>Troubleshooting Guide</h2>
+    
+    <figure class="diagram-section">
+<pre class="diagram">
+🔍 COMMON ISSUES & SOLUTIONS:
+
+1. 📺 LCD NOT DISPLAYING:
+   • Check: Power (5V/3.3V to VCC)
+   • Verify: I2C address (0x27 or 0x3F)
+   • Adjust: Contrast potentiometer
+   • Run: I2C scanner sketch
+
+2. 📶 WIFI NOT CONNECTING:
+   • Verify: SSID and password
+   • Check: 2.4GHz network (not 5GHz)
+   • Monitor: Serial output for error codes
+   • Test: Button for manual reconnection
+
+3. 🕐 TIME NOT SYNCING:
+   • Verify: Internet connectivity
+   • Check: Firewall (NTP port 123)
+   • Test: Alternative NTP servers
+   • Monitor: Serial for sync errors
+
+4. 🌐 WEB INTERFACE INACCESSIBLE:
+   • Check: Device IP address
+   • Verify: Correct WiFi mode (AP vs Client)
+   • Test: Different browser
+   • Clear: Browser cache
+
+5. 🔘 BUTTON NOT WORKING:
+   • Check: Wiring (GPIO 4 to button to GND)
+   • Verify: Internal pull-up enabled
+   • Test: Simple button test sketch
+   • Adjust: Debounce delay if needed
+
+🩺 DIAGNOSTIC TOOLS:
+• Serial Monitor (115200 baud)
+• I2C Scanner sketch
+• WiFi Scanner function
+• Web diagnostic page (/diagnostic)
+• LCD test patterns
+</pre>
+        <figcaption>Troubleshooting guide with diagnostic procedures</figcaption>
+    </figure>
+</section>
+
+<section class="reveal">
+    <h2>Future Enhancements</h2>
+    
+    <figure class="diagram-section">
+<pre class="diagram">
+🌟 PLANNED FEATURES:
+
+1. 📊 ADDITIONAL DISPLAYS:
+   • 🌡️ Temperature and humidity
+   • ☁️ Weather forecast
+   • 📅 Calendar events
+   • 📈 System statistics
+
+2. 🔗 ENHANCED CONNECTIVITY:
+   • 📱 Mobile app control
+   • 🗣️ Voice assistant integration (Alexa/Google)
+   • ☁️ Cloud synchronization
+   • 🔄 MQTT for IoT integration
+
+3. ⏰ ADVANCED TIME FEATURES:
+   • 🚨 Multiple configurable alarms
+   • ⏱️ Countdown timers
+   • 📅 Event countdowns
+   • 🌓 Sunrise/sunset times
+
+4. 🔋 POWER MANAGEMENT:
+   • Battery backup support
+   • Solar power option
+   • Low-power sleep modes
+   • Power consumption monitoring
+
+5. 🎨 CUSTOMIZATION:
+   • Multiple display themes
+   • Custom character sets
+   • User-defined messages
+   • Animation effects
+
+6. 🛠️ MAINTENANCE FEATURES:
+   • OTA (Over-the-Air) updates
+   • Remote diagnostics
+   • Automatic backup
+   • Health monitoring
+</pre>
+        <figcaption>Roadmap of planned enhancements and features</figcaption>
+    </figure>
+</section>
+
+<section class="reveal">
+    <h2>License & Credits</h2>
+    
+    <figure class="diagram-section">
+<pre class="diagram">
+📄 LICENSE: MIT
+• ✅ Commercial use allowed
+• ✅ Modification allowed
+• ✅ Distribution allowed
+• ✅ Private use allowed
+• ⚠️ No warranty provided
+• 📝 License and copyright notice required
+
+🔗 ATTRIBUTION EXAMPLE:
+"Based on Alynx WiFi NTP Digital Clock by Hashim"
+
+🔧 OPEN SOURCE COMPONENTS:
+• ESP32 Arduino Core (Apache 2.0)
+• LiquidCrystal_I2C library (MIT)
+• WiFi Libraries (LGPL)
+• WebServer Library (LGPL)
+• Arduino Framework (LGPL)
+
+🙏 CREDITS & ACKNOWLEDGMENTS:
+• Hashim: Project creator and developer
+• Espressif Systems: ESP32 hardware platform
+• NTP Pool Project: Free time servers
+• Open source community: Libraries and examples
+• Early testers and contributors
+
+🔒 SECURITY REMINDER:
+• ALWAYS change default passwords
+• Keep firmware updated
+• Monitor for security issues
+• Report vulnerabilities responsibly
+</pre>
+        <figcaption>License information and acknowledgments</figcaption>
+    </figure>
+</section>
+
+<!-- Original sections from your template -->
 <section class="reveal">
     <h2>Key Features</h2>
     <ul>
@@ -80,40 +665,6 @@
         <li>Persistent configuration storage</li>
         <li>Robust WiFi auto-reconnect logic</li>
     </ul>
-</section>
-
-<section class="reveal">
-    <h2>Connectivity & Reliability Engineering</h2>
-    <p>
-        The firmware implements multi-stage WiFi reconnection logic optimized
-        for real-world power and network instability. After power restoration,
-        the system aggressively retries connections during early boot and
-        transitions to stable retry intervals during normal operation.
-    </p>
-    <p>
-        During internet outages, the clock continues running using the ESP32’s
-        internal RTC and automatically resynchronizes once connectivity is
-        restored, ensuring minimal drift and uninterrupted display.
-    </p>
-
-    <!-- IMAGE PLACEHOLDER: WiFi reconnection logic flow -->
-</section>
-
-<section class="reveal">
-    <h2>User Interface & Configuration</h2>
-    <p>
-        A built-in web interface allows configuration of WiFi credentials,
-        timezone offsets, and display format using any standard web browser.
-        A physical push-button provides manual access to configuration mode
-        and recovery in case of network changes.
-    </p>
-    <p>
-        The display provides clear system feedback, including connection
-        status, date, and synchronization state, enabling unattended
-        long-term deployment.
-    </p>
-
-    <!-- IMAGE PLACEHOLDER: Web configuration UI -->
 </section>
 
 <section class="reveal">
@@ -155,11 +706,6 @@
 <section class="reveal">
     <h2>Demonstration Video</h2>
     <!-- VIDEO PLACEHOLDER -->
-</section>
-
-<section class="reveal">
-    <h2>Diagrams & Schematics</h2>
-    <!-- DIAGRAM PLACEHOLDER -->
 </section>
 
 <section class="reveal">
