@@ -15,6 +15,253 @@
 
     <!-- Main CSS -->
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* About page specific styles */
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .about-section {
+            margin-bottom: 60px;
+        }
+        
+        .about-section h2 {
+            color: var(--text-primary);
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent);
+        }
+        
+        .about-section h3 {
+            color: var(--text-primary);
+            margin: 20px 0 10px 0;
+        }
+        
+        .about-section p, .about-section li {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+        
+        .about-section ul {
+            padding-left: 20px;
+        }
+        
+        .about-section strong {
+            color: var(--text-primary);
+        }
+        
+        /* Profile Header */
+        .profile-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 30px;
+            background: var(--bg-card);
+            border-radius: 15px;
+            border: 1px solid rgba(250, 204, 21, 0.1);
+        }
+        
+        .profile-title {
+            font-size: 2.5rem;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+        
+        .profile-subtitle {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+        }
+        
+        .contact-item i {
+            color: var(--accent);
+        }
+        
+        /* Experience Timeline */
+        .experience-timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--accent);
+        }
+        
+        .experience-item {
+            position: relative;
+            margin-bottom: 40px;
+            padding-left: 30px;
+        }
+        
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 3px solid var(--bg-primary);
+        }
+        
+        .experience-date {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .experience-location {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        /* Technical Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .project-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid rgba(250, 204, 21, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .status-completed {
+            background: rgba(34, 197, 94, 0.1);
+            color: #16a34a;
+        }
+        
+        .status-ongoing {
+            background: rgba(250, 204, 21, 0.1);
+            color: #d97706;
+        }
+        
+        .status-development {
+            background: rgba(59, 130, 246, 0.1);
+            color: #2563eb;
+        }
+        
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .skill-category {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(250, 204, 21, 0.1);
+        }
+        
+        .skill-category h4 {
+            color: var(--text-primary);
+            margin: 0 0 15px 0;
+            font-size: 1.1rem;
+        }
+        
+        /* Interests Grid */
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .interest-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(250, 204, 21, 0.1);
+        }
+        
+        .interest-card h4 {
+            color: var(--text-primary);
+            margin: 0 0 10px 0;
+            font-size: 1.1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .profile-title {
+                font-size: 2rem;
+            }
+            
+            .profile-subtitle {
+                font-size: 1rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            .projects-grid,
+            .skills-grid,
+            .interests-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .experience-timeline {
+                padding-left: 20px;
+            }
+            
+            .experience-item {
+                padding-left: 20px;
+            }
+            
+            .experience-item::before {
+                left: -28px;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -22,63 +269,305 @@
     <nav>
         <h2>MD Hashim</h2>
         <ul>
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="../projects.html">Projects</a></li>
-            <li><a href="../resume.html">Resume</a></li>
-            <li><a href="../about.html" class="active">About</a></li>
-            <li><a href="../inquiry.html">Project Inquiry</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="inquiry.html">Project Inquiry</a></li>
         </ul>
     </nav>
 </header>
 
 <main class="content">
 
-<section class="reveal">
-    <h2>Engineering Profile</h2>
-    <p>
-        I am a Mechanical Engineer specializing in automation, control systems,
-        and machine-level engineering for real-world utility and industrial
-        applications. I focus on designing systems that operate reliably in
-        unattended field conditions, where safety, determinism, and fault
-        tolerance are critical.
-    </p>
-    <p>
-        My work spans pumps, heating systems, water treatment, and embedded
-        control hardware, covering the full lifecycle from requirements
-        analysis and control logic design to commissioning and field deployment.
-    </p>
-</section>
+    <!-- Profile Header -->
+    <div class="profile-header reveal">
+        <h1 class="profile-title">MD Hashim</h1>
+        <h2 class="profile-subtitle">Mechanical Engineer | Automation • Control Systems • Machines</h2>
+        <p><strong>Location:</strong> Raipur, Chhattisgarh</p>
+        
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>md.hashim.work@gmail.com</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <span>+91-797433231</span>
+            </div>
+            <div class="contact-item">
+                <i class="fab fa-github"></i>
+                <span>github.com/Mohammad-Hashim-Alynx</span>
+            </div>
+            <div class="contact-item">
+                <i class="fab fa-linkedin"></i>
+                <span>linkedin.com/in/md-hashim-work-linkdin</span>
+            </div>
+        </div>
+    </div>
 
-<section class="reveal">
-    <h2>Engineering Philosophy</h2>
-    <p>
-        I prioritize deterministic behavior, hardware safety interlocks, and
-        non-blocking firmware architectures over cloud dependency or fragile
-        abstractions. Every system is designed to fail safely, recover
-        autonomously, and operate continuously with minimal human intervention.
-    </p>
-</section>
+    <!-- Professional Profile -->
+    <section class="about-section reveal">
+        <h2>Professional Profile</h2>
+        <p>
+            Mechanical Engineer with 5+ years of independent experience designing and delivering 
+            field-deployed automation and control systems for pumps, heating, and utility equipment, 
+            from requirements analysis through commissioning.
+        </p>
+        <p>
+            My work spans the full engineering lifecycle—from initial concept and control logic design 
+            to PCB development, firmware implementation, and on-site field commissioning. I specialize 
+            in creating systems that operate reliably in unattended field conditions, where safety, 
+            determinism, and fault tolerance are critical.
+        </p>
+    </section>
 
-<section class="reveal">
-    <h2>Core Domains</h2>
-    <ul>
-        <li>Automation & Control Systems (FSM, PID, closed-loop control)</li>
-        <li>Pump, HVAC, Steam & Utility Equipment Automation</li>
-        <li>Embedded Systems (ESP32, Arduino)</li>
-        <li>Instrumentation & Sensor-Based Systems</li>
-        <li>Field Engineering & On-Site Commissioning</li>
-    </ul>
-</section>
+    <!-- Professional Experience -->
+    <section class="about-section reveal">
+        <h2>Professional Experience</h2>
+        
+        <div class="experience-timeline">
+            <div class="experience-item">
+                <div class="experience-date">Jan 2020 – Present</div>
+                <div class="experience-location">Remote & On-site | Chhattisgarh</div>
+                <h3>Independent Automation Engineer / Consultant</h3>
+                <p>
+                    Delivered custom automation systems for pumps and thermal equipment by designing 
+                    control logic and safety interlocks, reducing manual operation and enabling reliable 
+                    unattended field operation.
+                </p>
+                <p><strong>Key Achievements:</strong></p>
+                <ul>
+                    <li>Designed pump and thermal automation systems with safety interlocks</li>
+                    <li>Enabled unattended operation through deterministic control logic</li>
+                    <li>Reduced manual operation and equipment failure rates</li>
+                    <li>Implemented field diagnostics and remote monitoring capabilities</li>
+                </ul>
+            </div>
+            
+            <div class="experience-item">
+                <div class="experience-date">Dec 2025 – Present</div>
+                <div class="experience-location">Kanker, Chhattisgarh</div>
+                <h3>Industrial CNC Winding Machine Retrofitting / Conversion</h3>
+                <p><em>Client: Kanker Electrical-Refrigeration & Air-Conditioning</em></p>
+                <span class="project-status status-development">Pre-Implementation</span>
+                <p>
+                    Retrofitting a manual winding machine by designing CNC control architecture and 
+                    safety logic to improve winding accuracy, consistency, and reduce operator dependency.
+                </p>
+            </div>
+            
+            <div class="experience-item">
+                <div class="experience-date">Mar 2024 – Jun 2024</div>
+                <div class="experience-location">Kanker, Chhattisgarh</div>
+                <h3>Small-Scale Steam Boiler for Dry Cleaning Facility</h3>
+                <p><em>Client: Friends Drycleaners, Gilli Chowk-Kanker based Dry Cleaning facility</em></p>
+                <span class="project-status status-completed">Completed | Field-Deployed</span>
+                <p>
+                    Designed a dual-energy steam boiler with pressure safety systems, delivering reliable 
+                    steam supply and improved operational safety for continuous dry-cleaning operations.
+                </p>
+            </div>
+            
+            <div class="experience-item">
+                <div class="experience-date">Jan 2023 – Feb 2023</div>
+                <div class="experience-location">Kanker, Chhattisgarh</div>
+                <h3>5 kW On-Demand Steam Generator for Dry Cleaning Facility</h3>
+                <p><em>Client: Friends Drycleaners, Gilli Chowk-Kanker based Dry Cleaning Facility</em></p>
+                <span class="project-status status-completed">Completed | Field-Deployed</span>
+                <p>
+                    Eliminated idle heating by designing a 5 kW on-demand steam generator, achieving 
+                    ~3-second steam readiness and significantly reducing energy wastage.
+                </p>
+            </div>
+        </div>
+    </section>
 
-<section class="reveal">
-    <h2>Tools & Technologies</h2>
-    <ul>
-        <li>ESP32, Arduino, BLE, I²C, SPI, UART</li>
-        <li>AC/DC Electrical Systems & Safety Relays</li>
-        <li>PlatformIO, Arduino IDE, Git, GitHub</li>
-        <li>Real-time debugging and system diagnostics</li>
-    </ul>
-</section>
+    <!-- Technical R&D & Projects -->
+    <section class="about-section reveal">
+        <h2>Technical R&D & Projects</h2>
+        
+        <div class="projects-grid">
+            <div class="project-card">
+                <span class="project-status status-ongoing">Ongoing – Field Prototype Stage</span>
+                <h3>IntelliFlow™ Pump Automation & Protection System</h3>
+                <p>
+                    Developing a pump automation system with flow, pressure, and dry-run protection 
+                    to enable unattended operation while reducing water wastage and motor failures.
+                </p>
+                <a href="https://tinyurl.com/IntelliFlow-Automation" target="_blank" class="project-link">
+                    View Project Details →
+                </a>
+            </div>
+            
+            <div class="project-card">
+                <span class="project-status status-development">Design & Development Stage</span>
+                <h3>AquaSense™ Smart TDS & Water Quality Optimization System</h3>
+                <p>
+                    Developing a closed-loop ESP32-based TDS control system to maintain consistent 
+                    RO water quality through real-time sensing, mixing, and bypass control.
+                </p>
+                <a href="https://tinyurl.com/AquaSense-Smart" target="_blank" class="project-link">
+                    View Project Details →
+                </a>
+            </div>
+            
+            <div class="project-card">
+                <span class="project-status status-completed">Completed | Field-Deployed</span>
+                <h3>Automatic Inline Water Pressure Booster System</h3>
+                <p>
+                    Designed a flow-triggered inline booster system providing stable appliance pressure 
+                    at ~5% of commercial cost, preventing false triggering and pressure surges.
+                </p>
+                <a href="https://tinyurl.com/inline-pressure-booster" target="_blank" class="project-link">
+                    View Project Details →
+                </a>
+            </div>
+            
+            <div class="project-card">
+                <span class="project-status status-completed">Prototype Completed | Development Stage</span>
+                <h3>Ultra-Efficient Water Heating Control System</h3>
+                <p>
+                    Optimized a 50 L water heater using dual-relay safety and circulation control, 
+                    achieving ~62.5 electricity units per month under daily use.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="about-section reveal">
+        <h2>Skills & Expertise</h2>
+        
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h4>Automation & Control Systems</h4>
+                <ul>
+                    <li>Closed-loop control, PID, state machines</li>
+                    <li>Pump/HVAC/steam automation</li>
+                    <li>Safety interlock systems</li>
+                    <li>Deterministic control logic</li>
+                </ul>
+            </div>
+            
+            <div class="skill-category">
+                <h4>Instrumentation & Electrical Systems</h4>
+                <ul>
+                    <li>Multi-parameter sensors (flow, temperature, TDS)</li>
+                    <li>AC/DC power systems</li>
+                    <li>Electrical safety & protection</li>
+                    <li>Power distribution design</li>
+                </ul>
+            </div>
+            
+            <div class="skill-category">
+                <h4>Embedded Systems & Microcontrollers</h4>
+                <ul>
+                    <li>ESP32, Arduino, Teensy development</li>
+                    <li>BLE, I²C, SPI, UART communication</li>
+                    <li>Firmware development (C/C++)</li>
+                    <li>IoT & wireless systems</li>
+                </ul>
+            </div>
+            
+            <div class="skill-category">
+                <h4>Operations & Field Engineering</h4>
+                <ul>
+                    <li>On-site commissioning</li>
+                    <li>Preventive maintenance</li>
+                    <li>Live debugging & diagnostics</li>
+                    <li>Field troubleshooting</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personal Achievements & Interests -->
+    <section class="about-section reveal">
+        <h2>Personal Achievements & Interests</h2>
+        
+        <div class="interests-grid">
+            <div class="interest-card">
+                <h4>Portable Cross-Device Learning System</h4>
+                <p>
+                    Developed a portable digital learning ecosystem allowing seamless access to 
+                    study materials across devices, improving continuity, flexibility, and productivity.
+                </p>
+            </div>
+            
+            <div class="interest-card">
+                <h4>Large-Scale Flashcard System</h4>
+                <p>
+                    Designed and maintained a high-volume flashcard system (~500,000 cards) for 
+                    systematic practice, spaced repetition, and efficient long-term revision.
+                </p>
+            </div>
+            
+            <div class="interest-card">
+                <h4>Digital Knowledge Library</h4>
+                <p>
+                    Digitized 50+ books using Notion and AI to build a structured, searchable 
+                    personal knowledge base, enabling rapid information retrieval.
+                </p>
+            </div>
+            
+            <div class="interest-card">
+                <h4>GitHub Repositories</h4>
+                <p>
+                    Maintain 6+ production-grade GitHub repositories documenting end-to-end 
+                    automation and embedded control projects with complete documentation.
+                </p>
+            </div>
+        </div>
+        
+        <h3 style="margin-top: 30px;">Engineering Philosophy</h3>
+        <p>
+            I prioritize deterministic behavior, hardware safety interlocks, and non-blocking 
+            firmware architectures over cloud dependency or fragile abstractions. Every system 
+            is designed to fail safely, recover autonomously, and operate continuously with 
+            minimal human intervention.
+        </p>
+        <p>
+            <strong>Primary Interests:</strong> Industrial automation for utility, pump, and HVAC 
+            systems with focus on reliable, unattended operation. Enjoys microcontroller-based 
+            control design, field troubleshooting, and energy-efficient system optimization.
+        </p>
+    </section>
+
+    <!-- Education -->
+    <section class="about-section reveal">
+        <h2>Education & Certifications</h2>
+        
+        <div class="experience-item">
+            <div class="experience-date">2015 – 2020</div>
+            <div class="experience-location">Chhattisgarh Swami Vivekananda Technical University</div>
+            <h3>Bachelor of Technology – Mechanical Engineering</h3>
+            <p><strong>Focus Areas:</strong> Control Systems, Thermodynamics, Fluid Mechanics, Machine Design</p>
+            <p><strong>Notable Projects:</strong> Automated systems design, Thermal analysis projects, CAD modeling</p>
+            <a href="https://tinyurl.com/Btech-Mechanical-Degree" target="_blank" class="project-link">
+                View Degree Details →
+            </a>
+        </div>
+        
+        <h3 style="margin-top: 30px;">Industrial Training Certificates</h3>
+        <ul>
+            <li>
+                <a href="https://tinyurl.com/Simplex-Training-Certificate" target="_blank">
+                    Simplex Castings Pvt. Ltd.
+                </a>
+            </li>
+            <li>
+                <a href="https://tinyurl.com/Certificate-Force-Motor" target="_blank">
+                    Force Motors, Pvt. Ltd.
+                </a>
+            </li>
+            <li>
+                <a href="https://tinyurl.com/HVAC-Training-Certificate" target="_blank">
+                    Kanker Electrical & Air Conditioning (HVAC)
+                </a>
+            </li>
+        </ul>
+    </section>
 
 </main>
 
