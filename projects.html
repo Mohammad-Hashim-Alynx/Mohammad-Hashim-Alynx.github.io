@@ -16,160 +16,6 @@
     <!-- Main CSS -->
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Dropdown Menu Styles - FIXED */
-        .projects-dropdown {
-            position: relative;
-            display: block;
-            margin: 50px 0;
-            width: 100%;
-        }
-        
-        .dropdown-toggle {
-            background-color: var(--bg-card);
-            color: var(--accent);
-            border: 2px solid var(--accent);
-            padding: 16px 28px;
-            border-radius: 12px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            transition: all 0.3s ease;
-        }
-        
-        .dropdown-toggle:hover {
-            background-color: rgba(250, 204, 21, 0.1);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(250, 204, 21, 0.15);
-        }
-        
-        .dropdown-toggle i {
-            transition: transform 0.3s ease;
-        }
-        
-        .dropdown-toggle.active i {
-            transform: rotate(180deg);
-        }
-        
-        .dropdown-menu {
-            position: absolute;
-            top: calc(100% + 10px);
-            left: 0;
-            width: 100%;
-            background-color: var(--bg-card);
-            border: 1px solid rgba(250, 204, 21, 0.2);
-            border-radius: 12px;
-            padding: 0;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-15px);
-            transition: all 0.3s ease;
-            z-index: 1000;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-            max-height: 500px;
-            overflow-y: auto;
-        }
-        
-        .dropdown-menu.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-        
-        .dropdown-item {
-            display: block;
-            padding: 14px 28px;
-            color: var(--text-main);
-            text-decoration: none;
-            transition: all 0.2s ease;
-            border-left: 4px solid transparent;
-            font-size: 0.95rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        .dropdown-item:last-child {
-            border-bottom: none;
-        }
-        
-        .dropdown-item:hover {
-            background-color: rgba(250, 204, 21, 0.1);
-            color: var(--accent);
-            border-left-color: var(--accent);
-        }
-        
-        .dropdown-item i {
-            width: 20px;
-            margin-right: 12px;
-            color: var(--accent-light);
-        }
-        
-        .project-year {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-left: 8px;
-            font-weight: 500;
-        }
-        
-        .project-status {
-            font-size: 0.75rem;
-            padding: 4px 10px;
-            border-radius: 12px;
-            margin-left: 10px;
-            font-weight: 500;
-            float: right;
-        }
-        
-        .status-completed {
-            background-color: rgba(16, 185, 129, 0.2);
-            color: #10b981;
-        }
-        
-        .status-in-progress {
-            background-color: rgba(250, 204, 21, 0.2);
-            color: var(--accent);
-        }
-        
-        .status-planned {
-            background-color: rgba(148, 163, 184, 0.2);
-            color: #94a3b8;
-        }
-        
-        .dropdown-divider {
-            height: 1px;
-            background-color: rgba(255, 255, 255, 0.1);
-            margin: 10px 0;
-        }
-        
-        .dropdown-header {
-            padding: 12px 28px;
-            color: var(--accent);
-            font-size: 0.95rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            background-color: rgba(250, 204, 21, 0.08);
-            margin-top: 0;
-            border-bottom: 1px solid rgba(250, 204, 21, 0.2);
-            position: sticky;
-            top: 0;
-            z-index: 1;
-        }
-        
-        .dropdown-count {
-            display: block;
-            padding: 12px 28px;
-            color: var(--accent);
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-align: center;
-            border-top: 1px solid rgba(250, 204, 21, 0.1);
-            margin-top: 10px;
-            background-color: rgba(250, 204, 21, 0.05);
-        }
-        
         /* Quick Project Stats */
         .project-stats {
             display: grid;
@@ -215,22 +61,6 @@
         
         /* Responsive Fixes */
         @media (max-width: 768px) {
-            .dropdown-menu {
-                position: fixed;
-                top: 50%;
-                left: 20px;
-                right: 20px;
-                width: auto;
-                max-height: 70vh;
-                overflow-y: auto;
-                transform: translateY(-40%);
-                z-index: 9999;
-            }
-            
-            .dropdown-menu.active {
-                transform: translateY(-50%);
-            }
-            
             .project-stats {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
@@ -244,30 +74,19 @@
                 grid-template-columns: 1fr;
                 gap: 25px;
             }
-            
-            .dropdown-toggle {
-                padding: 14px 20px;
-                font-size: 1.1rem;
-            }
-            
-            .dropdown-item {
-                padding: 12px 20px;
-            }
-            
-            .dropdown-header {
-                padding: 12px 20px;
-            }
         }
         
         @media (max-width: 480px) {
             .project-stats {
                 grid-template-columns: 1fr;
             }
-            
-            .dropdown-item {
-                padding: 10px 15px;
-                font-size: 0.9rem;
-            }
+        }
+        
+        /* Section Intro */
+        .section-intro {
+            margin-bottom: 40px; 
+            color: var(--text-muted); 
+            font-size: 1.1rem;
         }
     </style>
 </head>
@@ -329,7 +148,7 @@
 <!-- ================= FEATURED PROJECTS ================= -->
 <section id="featured-projects" class="reveal">
     <h2>Featured Engineering Projects</h2>
-    <p class="section-intro" style="margin-bottom: 40px; color: var(--text-muted); font-size: 1.1rem;">
+    <p class="section-intro">
         These are my most significant and fully documented engineering builds, 
         showcasing end-to-end system design and field validation across various domains.
     </p>
@@ -498,88 +317,78 @@
 </section>
 
 <!-- ================= ALL PROJECTS DROPDOWN ================= -->
-<section class="reveal" style="padding: 0 80px; margin-top: 60px;">
+<!-- REMOVED .reveal class from this section -->
+<section style="padding: 0 80px; margin-top: 60px;">
     <div class="projects-dropdown">
-        <button class="dropdown-toggle" id="dropdownToggle">
+        <!-- Added ARIA attributes -->
+        <button class="dropdown-toggle" id="dropdownToggle" aria-expanded="false" aria-controls="dropdownMenu">
             <span><i class="fas fa-list-check"></i> View Complete Project Timeline (44 Projects)</span>
             <i class="fas fa-chevron-down"></i>
         </button>
         
-        <div class="dropdown-menu" id="dropdownMenu">
+        <!-- Added ARIA attributes -->
+        <div class="dropdown-menu" id="dropdownMenu" role="menu" aria-labelledby="dropdownToggle">
             <div class="dropdown-header">Early Projects (2012-2015)</div>
             
-            <!-- Updated structure for all items -->
-            <a href="projects/egg-incubator.html" class="dropdown-item">
+            <!-- UPDATED STRUCTURE with dropdown-item-text -->
+            <a href="projects/egg-incubator.html" class="dropdown-item" role="menuitem">
                 <i class="fas fa-water"></i>
-                <div class="dropdown-item-content">
-                    <span class="dropdown-item-text">Working Hydro Electric Dam Model</span>
-                    <span class="project-year">2012</span>
-                    <span class="project-status status-completed">Completed</span>
-                </div>
+                <span class="dropdown-item-text">Working Hydro Electric Dam Model</span>
+                <span class="project-year">2012</span>
+                <span class="project-status status-completed">Completed</span>
             </a>
             
-            <a href="#featured-projects" class="dropdown-item">
+            <a href="#featured-projects" class="dropdown-item" role="menuitem">
                 <i class="fas fa-bicycle"></i>
-                <div class="dropdown-item-content">
-                    <span class="dropdown-item-text">Bicycle Dynamo System</span>
-                    <span class="project-year">2014</span>
-                    <span class="project-status status-completed">Completed</span>
-                </div>
+                <span class="dropdown-item-text">Bicycle Dynamo System</span>
+                <span class="project-year">2014</span>
+                <span class="project-status status-completed">Completed</span>
             </a>
             
-            <a href="#featured-projects" class="dropdown-item">
+            <a href="#featured-projects" class="dropdown-item" role="menuitem">
                 <i class="fas fa-helicopter"></i>
-                <div class="dropdown-item-content">
-                    <span class="dropdown-item-text">Spy Drone (Class 12th Project)</span>
-                    <span class="project-year">2015</span>
-                    <span class="project-status status-completed">Completed</span>
-                </div>
+                <span class="dropdown-item-text">Spy Drone (Class 12th Project)</span>
+                <span class="project-year">2015</span>
+                <span class="project-status status-completed">Completed</span>
             </a>
             
             <div class="dropdown-header">College & Early Career (2016-2019)</div>
-            <a href="projects/pool-water-quality.html" class="dropdown-item">
+            <a href="projects/pool-water-quality.html" class="dropdown-item" role="menuitem">
                 <i class="fas fa-flask"></i>
-                <div class="dropdown-item-content">
-                    <span class="dropdown-item-text">Pool Water Quality Monitoring System</span>
-                    <span class="project-year">2018-19</span>
-                    <span class="project-status status-completed">Completed</span>
-                </div>
+                <span class="dropdown-item-text">Pool Water Quality Monitoring System</span>
+                <span class="project-year">2018-19</span>
+                <span class="project-status status-completed">Completed</span>
             </a>
             
             <div class="dropdown-header">COVID Era Projects (2020-2022)</div>
-            <a href="projects/egg-incubator.html" class="dropdown-item">
+            <a href="projects/egg-incubator.html" class="dropdown-item" role="menuitem">
                 <i class="fas fa-egg"></i>
-                <div class="dropdown-item-content">
-                    <span class="dropdown-item-text">Programmable Automatic Egg Incubating Machine</span>
-                    <span class="project-year">2020</span>
-                    <span class="project-status status-completed">Completed</span>
-                </div>
+                <span class="dropdown-item-text">Programmable Automatic Egg Incubating Machine</span>
+                <span class="project-year">2020</span>
+                <span class="project-status status-completed">Completed</span>
             </a>
             
             <div class="dropdown-header">Current & Recent Projects (2023-2026)</div>
-            <a href="projects/hid-remote.html" class="dropdown-item">
+            <a href="projects/hid-remote.html" class="dropdown-item" role="menuitem">
                 <i class="fas fa-gamepad"></i>
-                <div class="dropdown-item-content">
-                    <span class="dropdown-item-text">BLE HID Pad / Wireless Macro Trigger</span>
-                    <span class="project-year">2025</span>
-                    <span class="project-status status-in-progress">In Progress</span>
-                </div>
+                <span class="dropdown-item-text">BLE HID Pad / Wireless Macro Trigger</span>
+                <span class="project-year">2025</span>
+                <span class="project-status status-in-progress">In Progress</span>
             </a>
             
             <div class="dropdown-header">Frequently Built & Specialized</div>
-            <a href="#featured-projects" class="dropdown-item">
+            <a href="#featured-projects" class="dropdown-item" role="menuitem">
                 <i class="fas fa-flashlight"></i>
-                <div class="dropdown-item-content">
-                    <span class="dropdown-item-text">Waterproof Flashlights (20+ units)</span>
-                    <span class="project-year">Multiple</span>
-                    <span class="project-status status-completed">Completed</span>
-                </div>
+                <span class="dropdown-item-text">Waterproof Flashlights (20+ units)</span>
+                <span class="project-year">Multiple</span>
+                <span class="project-status status-completed">Completed</span>
             </a>
             
             <div class="dropdown-count">44 Total Projects • 31 Completed • 7 In Progress • 6 Planned</div>
         </div>
     </div>
 </section>
+
 <!-- ================= CONTACT ================= -->
 <section id="contact" class="reveal">
     <h2>Ready to Build Something?</h2>
@@ -618,99 +427,8 @@
     </div>
 </section>
 
-<script>
-    // Dropdown Toggle Functionality - FIXED
-    document.addEventListener('DOMContentLoaded', function() {
-        const dropdownToggle = document.getElementById('dropdownToggle');
-        const dropdownMenu = document.getElementById('dropdownMenu');
-        
-        dropdownToggle.addEventListener('click', function(e) {
-            e.stopPropagation();
-            dropdownToggle.classList.toggle('active');
-            dropdownMenu.classList.toggle('active');
-        });
-        
-        // Close dropdown when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!dropdownToggle.contains(event.target) && !dropdownMenu.contains(event.target)) {
-                dropdownToggle.classList.remove('active');
-                dropdownMenu.classList.remove('active');
-            }
-        });
-        
-        // Close dropdown when selecting an item (on mobile)
-        dropdownMenu.addEventListener('click', function(event) {
-            if (window.innerWidth <= 768) {
-                dropdownToggle.classList.remove('active');
-                dropdownMenu.classList.remove('active');
-            }
-        });
-        
-        // Prevent dropdown from closing when clicking inside it
-        dropdownMenu.addEventListener('click', function(e) {
-            e.stopPropagation();
-        });
-    });
-</script>
-
+<!-- ================= ONLY ONE SCRIPT ================= -->
 <script src="script.js"></script>
-
-<script>
-    // Dropdown Toggle Functionality - SIMPLE AND WORKING
-    document.addEventListener('DOMContentLoaded', function() {
-        const dropdownToggle = document.getElementById('dropdownToggle');
-        const dropdownMenu = document.getElementById('dropdownMenu');
-        
-        // Toggle dropdown
-        dropdownToggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            // Toggle active class
-            dropdownToggle.classList.toggle('active');
-            dropdownMenu.classList.toggle('active');
-            
-            // Handle body scroll on mobile
-            if (window.innerWidth <= 768) {
-                if (dropdownMenu.classList.contains('active')) {
-                    document.body.style.overflow = 'hidden';
-                } else {
-                    document.body.style.overflow = '';
-                }
-            }
-        });
-        
-        // Close dropdown when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!dropdownMenu.contains(event.target) && !dropdownToggle.contains(event.target)) {
-                dropdownToggle.classList.remove('active');
-                dropdownMenu.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-        
-        // Close dropdown on escape key
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                dropdownToggle.classList.remove('active');
-                dropdownMenu.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-        
-        // Handle dropdown item clicks
-        dropdownMenu.addEventListener('click', function(e) {
-            // Only close on mobile when clicking an actual link
-            if (window.innerWidth <= 768 && e.target.closest('.dropdown-item')) {
-                setTimeout(() => {
-                    dropdownToggle.classList.remove('active');
-                    dropdownMenu.classList.remove('active');
-                    document.body.style.overflow = '';
-                }, 300);
-            }
-        });
-    });
-</script>
 
 </body>
 </html>

@@ -403,13 +403,15 @@ h3 {
     transform: translateX(5px);
 }
 
-/* ================= DROPDOWN MENU STYLES - COMPLETELY FIXED ================= */
+/* ================= DROPDOWN MENU STYLES - FINAL FIX ================= */
 .projects-dropdown {
     position: relative;
     display: block;
     margin: 50px 0;
     width: 100%;
     z-index: 100;
+    /* Remove transform from parent to prevent stacking context issues */
+    transform: none !important;
 }
 
 .dropdown-toggle {
@@ -471,9 +473,10 @@ h3 {
     pointer-events: auto;
 }
 
-/* SIMPLIFIED DROPDOWN ITEMS - NO COMPLEX FLEX WRAPPING */
+/* ================= DROPDOWN ITEMS - FLEXBOX FIX ================= */
 .dropdown-item {
-    display: block;
+    display: flex;
+    align-items: center;
     padding: 14px 28px;
     color: var(--text-main);
     text-decoration: none;
@@ -481,8 +484,8 @@ h3 {
     border-left: 4px solid transparent;
     font-size: 0.95rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    position: relative;
-    overflow: hidden;
+    gap: 12px;
+    min-height: 50px;
 }
 
 .dropdown-item:last-child {
@@ -497,39 +500,33 @@ h3 {
 
 .dropdown-item i {
     width: 20px;
-    margin-right: 12px;
     color: var(--accent-light);
-    display: inline-block;
-    vertical-align: middle;
+    flex-shrink: 0;
+    text-align: center;
 }
 
 .dropdown-item-text {
-    display: inline-block;
-    vertical-align: middle;
-    max-width: calc(100% - 150px);
+    flex: 1;
+    min-width: 0; /* Allow text truncation */
     word-break: break-word;
     margin-right: 10px;
 }
 
-/* Project year and status - SIMPLE VERSION */
 .project-year {
     font-size: 0.8rem;
     color: var(--text-muted);
-    margin: 0 8px;
     font-weight: 500;
-    display: inline-block;
-    vertical-align: middle;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .project-status {
     font-size: 0.75rem;
     padding: 4px 10px;
     border-radius: 12px;
-    margin-left: 10px;
     font-weight: 500;
-    display: inline-block;
-    vertical-align: middle;
-    float: right;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .status-completed {
@@ -578,13 +575,6 @@ h3 {
     bottom: 0;
     z-index: 2;
     backdrop-filter: blur(10px);
-}
-
-/* Clear floats */
-.dropdown-item::after {
-    content: "";
-    display: table;
-    clear: both;
 }
 
 /* Quick Project Stats */
@@ -821,6 +811,23 @@ figcaption {
     .projects-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+    
+    /* Fix dropdown positioning on tablet */
+    .dropdown-menu {
+        position: fixed !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -60%) !important;
+        width: 90% !important;
+        max-width: 600px !important;
+        max-height: 70vh !important;
+        pointer-events: none;
+    }
+    
+    .dropdown-menu.active {
+        transform: translate(-50%, -50%) !important;
+        pointer-events: auto;
+    }
 }
 
 @media (max-width: 768px) {
@@ -939,19 +946,25 @@ figcaption {
     .dropdown-menu {
         position: fixed !important;
         top: 50% !important;
-        left: 20px !important;
-        right: 20px !important;
+        left: 50% !important;
+        transform: translate(-50%, -60%) scale(0.95) !important;
         width: calc(100% - 40px) !important;
+        max-width: 500px !important;
         max-height: 70vh !important;
         overflow-y: auto !important;
-        transform: translateY(-40%) !important;
         z-index: 9999 !important;
         -webkit-overflow-scrolling: touch !important;
         overscroll-behavior: contain !important;
+        pointer-events: none;
+        opacity: 0;
+        visibility: hidden;
     }
     
     .dropdown-menu.active {
-        transform: translateY(-50%) !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: translate(-50%, -50%) scale(1) !important;
+        pointer-events: auto;
     }
     
     .project-stats {
@@ -976,6 +989,10 @@ figcaption {
     .dropdown-item {
         padding: 12px 20px;
         font-size: 0.9rem;
+        white-space: normal;
+        word-wrap: break-word;
+        gap: 10px;
+        flex-wrap: wrap;
     }
     
     .dropdown-header {
@@ -989,16 +1006,20 @@ figcaption {
     }
     
     .dropdown-item-text {
-        max-width: calc(100% - 120px);
-        display: block;
+        flex: 1 0 100%;
+        margin-right: 0;
         margin-bottom: 5px;
     }
     
-    .project-year,
+    .project-year {
+        font-size: 0.75rem;
+        margin: 0 5px 0 0;
+    }
+    
     .project-status {
-        float: none;
-        display: inline-block;
-        margin: 2px 5px 2px 0;
+        font-size: 0.7rem;
+        padding: 3px 8px;
+        margin-left: auto;
     }
     
     /* Contact */
@@ -1082,19 +1103,33 @@ figcaption {
     .dropdown-item {
         padding: 10px 15px;
         font-size: 0.85rem;
+        gap: 8px;
     }
     
-    .dropdown-item-text {
-        max-width: calc(100% - 100px);
+    .dropdown-header {
+        padding: 10px 15px;
+        font-size: 0.8rem;
+    }
+    
+    .dropdown-count {
+        padding: 10px 15px;
+        font-size: 0.8rem;
     }
     
     .project-year {
         font-size: 0.7rem;
+        margin: 0 4px 0 0;
     }
     
     .project-status {
         font-size: 0.65rem;
-        padding: 3px 8px;
+        padding: 2px 6px;
+    }
+    
+    /* Mobile dropdown smaller */
+    .dropdown-menu {
+        width: calc(100% - 30px) !important;
+        max-height: 65vh !important;
     }
     
     /* Media Grid */
