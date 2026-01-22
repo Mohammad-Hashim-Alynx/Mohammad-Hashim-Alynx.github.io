@@ -55,6 +55,22 @@
 <section class="reveal">
     <h2>System Architecture & Subsystems</h2>
 
+<section class="reveal diagram-section">
+    <h2>Central Control & Fault Tolerance</h2>
+
+    <pre class="diagram">
+🧠 CENTRAL LOGIC UNIT (Microcontroller)
+├─ 📊 Data Logger
+├─ ⏰ 28-Day Phase Timer
+└─ 🔴 Pre-Heat → 🟡 Main → 🔵 Lockdown → 🟢 Hatch
+
+🚨 FAULT TOLERANCE
+├─ 🔄 Cross-monitoring
+├─ 📢 Alert thresholds
+└─ 🆘 Redundant sensors
+    </pre>
+</section>
+
     <h3>Temperature Control</h3>
     <p>
         Multi-level regulation using two W1209 digital thermostat controllers
@@ -62,6 +78,8 @@
         element, while the second provides redundant oversight, maintaining
         stability within ±0.5 °C of the 37.8 °C setpoint.
     </p>
+
+
 
     <h3>Humidity Management</h3>
     <p>
