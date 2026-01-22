@@ -16,11 +16,11 @@
     <!-- Main CSS -->
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Dropdown Menu Styles */
+        /* Dropdown Menu Styles - FIXED */
         .projects-dropdown {
             position: relative;
-            display: inline-block;
-            margin: 30px 0 40px;
+            display: block;
+            margin: 50px 0;
             width: 100%;
         }
         
@@ -28,9 +28,9 @@
             background-color: var(--bg-card);
             color: var(--accent);
             border: 2px solid var(--accent);
-            padding: 14px 24px;
-            border-radius: 10px;
-            font-size: 1.1rem;
+            padding: 16px 28px;
+            border-radius: 12px;
+            font-size: 1.2rem;
             font-weight: 600;
             cursor: pointer;
             display: flex;
@@ -42,7 +42,8 @@
         
         .dropdown-toggle:hover {
             background-color: rgba(250, 204, 21, 0.1);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(250, 204, 21, 0.15);
         }
         
         .dropdown-toggle i {
@@ -55,20 +56,19 @@
         
         .dropdown-menu {
             position: absolute;
-            top: 100%;
+            top: calc(100% + 10px);
             left: 0;
             width: 100%;
             background-color: var(--bg-card);
             border: 1px solid rgba(250, 204, 21, 0.2);
-            border-radius: 10px;
-            margin-top: 10px;
-            padding: 15px 0;
+            border-radius: 12px;
+            padding: 0;
             opacity: 0;
             visibility: hidden;
-            transform: translateY(-10px);
+            transform: translateY(-15px);
             transition: all 0.3s ease;
             z-index: 1000;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
             max-height: 500px;
             overflow-y: auto;
         }
@@ -81,12 +81,17 @@
         
         .dropdown-item {
             display: block;
-            padding: 12px 24px;
+            padding: 14px 28px;
             color: var(--text-main);
             text-decoration: none;
             transition: all 0.2s ease;
-            border-left: 3px solid transparent;
+            border-left: 4px solid transparent;
             font-size: 0.95rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .dropdown-item:last-child {
+            border-bottom: none;
         }
         
         .dropdown-item:hover {
@@ -110,7 +115,7 @@
         
         .project-status {
             font-size: 0.75rem;
-            padding: 3px 8px;
+            padding: 4px 10px;
             border-radius: 12px;
             margin-left: 10px;
             font-weight: 500;
@@ -139,25 +144,30 @@
         }
         
         .dropdown-header {
-            padding: 10px 24px;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            font-weight: 600;
+            padding: 12px 28px;
+            color: var(--accent);
+            font-size: 0.95rem;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            background-color: rgba(250, 204, 21, 0.05);
-            margin-top: 5px;
+            background-color: rgba(250, 204, 21, 0.08);
+            margin-top: 0;
+            border-bottom: 1px solid rgba(250, 204, 21, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1;
         }
         
         .dropdown-count {
             display: block;
-            padding: 10px 24px;
+            padding: 12px 28px;
             color: var(--accent);
             font-size: 0.9rem;
             font-weight: 600;
             text-align: center;
             border-top: 1px solid rgba(250, 204, 21, 0.1);
             margin-top: 10px;
+            background-color: rgba(250, 204, 21, 0.05);
         }
         
         /* Quick Project Stats */
@@ -195,6 +205,15 @@
             color: var(--text-muted);
         }
         
+        /* Enhanced Projects Grid - All projects under one heading */
+        .all-projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        /* Responsive Fixes */
         @media (max-width: 768px) {
             .dropdown-menu {
                 position: fixed;
@@ -205,6 +224,7 @@
                 max-height: 70vh;
                 overflow-y: auto;
                 transform: translateY(-40%);
+                z-index: 9999;
             }
             
             .dropdown-menu.active {
@@ -218,6 +238,24 @@
             
             .stat-number {
                 font-size: 2rem;
+            }
+            
+            .all-projects-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .dropdown-toggle {
+                padding: 14px 20px;
+                font-size: 1.1rem;
+            }
+            
+            .dropdown-item {
+                padding: 12px 20px;
+            }
+            
+            .dropdown-header {
+                padding: 12px 20px;
             }
         }
         
@@ -288,11 +326,182 @@
     </div>
 </section>
 
+<!-- ================= FEATURED PROJECTS ================= -->
+<section id="featured-projects" class="reveal">
+    <h2>Featured Engineering Projects</h2>
+    <p class="section-intro" style="margin-bottom: 40px; color: var(--text-muted); font-size: 1.1rem;">
+        These are my most significant and fully documented engineering builds, 
+        showcasing end-to-end system design and field validation across various domains.
+    </p>
+    
+    <div class="all-projects-grid">
+        <!-- Featured Project 1 -->
+        <article class="project-card reveal delay-1">
+            <div class="project-icon">
+                <i class="fas fa-egg"></i>
+            </div>
+            <div class="project-content">
+                <h3>Programmable Automatic Egg Incubating Machine</h3>
+                <p class="project-outcome">
+                    <i class="fas fa-check-circle"></i> ±0.5°C temperature stability with dual-controller redundancy
+                </p>
+                <p class="project-outcome">
+                    <i class="fas fa-check-circle"></i> 85%+ hatch rate achieved with zero daily intervention
+                </p>
+                <p class="project-outcome">
+                    <i class="fas fa-check-circle"></i> 3-hour battery backup system for uninterrupted operation
+                </p>
+                <a href="projects/egg-incubator.html" class="project-link">View Full Technical Details →</a>
+            </div>
+        </article>
+
+        <!-- Featured Project 2 -->
+        <article class="project-card reveal delay-2">
+            <div class="project-icon">
+                <i class="fas fa-tint"></i>
+            </div>
+            <div class="project-content">
+                <h3>Automatic Inline Water Pressure Booster System</h3>
+                <p class="project-outcome">
+                    <i class="fas fa-check-circle"></i> ESP32-based demand-driven pressure control
+                </p>
+                <p class="project-outcome">
+                    <i class="fas fa-check-circle"></i> Optimized for low-pressure residential environments
+                </p>
+                <p class="project-outcome">
+                    <i class="fas fa-check-circle"></i> Real-time monitoring with automatic adjustment logic
+                </p>
+                <a href="projects/water-pressure-booster.html" class="project-link">View Full Technical Details →</a>
+            </div>
+        </article>
+
+        <!-- Featured Project 3 -->
+        <article class="project-card reveal delay-3">
+            <div class="project-icon">
+                <i class="fas fa-clock"></i>
+            </div>
+            <div class="project-content">
+                <h3>Alynx™ Geolocation-Based NTP WiFi LCD Clock</h3>
+                <p class="project-outcome">
+                    <i class="fas fa-check-circle"></i> Automatic timezone detection via geolocation
+                </p>
+                <p class="project-outcome">
+                    <i class="fas fa-check-circle"></i> NTP-synchronized with power-loss recovery
+                </p>
+                <p class="project-outcome">
+                    <i class="fas fa-check-circle"></i> Web-based configuration interface
+                </p>
+                <a href="projects/ntp-clock.html" class="project-link">View Full Technical Details →</a>
+            </div>
+        </article>
+
+        <!-- Featured Project 4 -->
+        <article class="project-card reveal delay-1">
+            <div class="project-icon">
+                <i class="fas fa-gamepad"></i>
+            </div>
+            <div class="project-content">
+                <h3>HID Remote / Controller System</h3>
+                <p class="project-outcome">
+                    <i class="fas fa-check-circle"></i> Custom wireless human-interface device
+                </p>
+                <p class="project-outcome">
+                    <i class="fas fa-check-circle"></i> Embedded firmware with command logic
+                </p>
+                <p class="project-outcome">
+                    <i class="fas fa-check-circle"></i> Multi-device interaction capability
+                </p>
+                <a href="projects/hid-remote.html" class="project-link">View Full Technical Details →</a>
+            </div>
+        </article>
+
+        <!-- Featured Project 5 -->
+        <article class="project-card reveal delay-2">
+            <div class="project-icon">
+                <i class="fas fa-water"></i>
+            </div>
+            <div class="project-content">
+                <h3>Advance Smart Pool Water Quality Monitoring System</h3>
+                <p class="project-outcome">
+                    <i class="fas fa-check-circle"></i> Arduino-based TDS measurement and monitoring
+                </p>
+                <p class="project-outcome">
+                    <i class="fas fa-check-circle"></i> Accurate salt dosing calculation for pool maintenance
+                </p>
+                <p class="project-outcome">
+                    <i class="fas fa-check-circle"></i> Real-time water quality assessment and alerts
+                </p>
+                <a href="projects/pool-water-quality.html" class="project-link">View Full Technical Details →</a>
+            </div>
+        </article>
+
+        <!-- Featured Project 6 -->
+        <article class="project-card reveal delay-3">
+            <div class="project-icon">
+                <i class="fas fa-pump"></i>
+            </div>
+            <div class="project-content">
+                <h3>IntelliFlow™ Automatic Municipal Water Pump Control System</h3>
+                <p class="project-outcome">
+                    <i class="fas fa-check-circle"></i> Municipal-grade pump protection and control
+                </p>
+                <p class="project-outcome">
+                    <i class="fas fa-check-circle"></i> Dry-run and cavitation prevention systems
+                </p>
+                <p class="project-outcome">
+                    <i class="fas fa-check-circle"></i> Automated scheduling for unattended operation
+                </p>
+                <a href="projects/intelliflow.html" class="project-link">View Full Technical Details →</a>
+            </div>
+        </article>
+
+        <!-- Featured Project 7 -->
+        <article class="project-card reveal delay-1">
+            <div class="project-icon">
+                <i class="fas fa-filter"></i>
+            </div>
+            <div class="project-content">
+                <h3>AquaSense™ Smart TDS & Water Quality Optimization System</h3>
+                <p class="project-outcome">
+                    <i class="fas fa-check-circle"></i> Closed-loop TDS regulation for RO purification
+                </p>
+                <p class="project-outcome">
+                    <i class="fas fa-check-circle"></i> Automatic mineral dosing and quality control
+                </p>
+                <p class="project-outcome">
+                    <i class="fas fa-check-circle"></i> Real-time monitoring with optimization logic
+                </p>
+                <a href="projects/aquasense.html" class="project-link">View Full Technical Details →</a>
+            </div>
+        </article>
+
+        <!-- Coming Soon Card -->
+        <article class="project-card reveal delay-2" style="border-style: dashed; opacity: 0.8;">
+            <div class="project-icon" style="background: rgba(250, 204, 21, 0.2);">
+                <i class="fas fa-plus"></i>
+            </div>
+            <div class="project-content">
+                <h3>More Projects in Development</h3>
+                <p class="project-outcome">
+                    <i class="fas fa-clock"></i> Currently building next-generation IoT systems
+                </p>
+                <p class="project-outcome">
+                    <i class="fas fa-clock"></i> Advanced automation and control solutions
+                </p>
+                <p class="project-outcome">
+                    <i class="fas fa-clock"></i> Industrial-grade reliability engineering
+                </p>
+                <a href="inquiry.html" class="project-link">Discuss Your Project Idea →</a>
+            </div>
+        </article>
+    </div>
+</section>
+
 <!-- ================= ALL PROJECTS DROPDOWN ================= -->
-<section class="reveal" style="padding: 0 80px;">
+<section class="reveal" style="padding: 0 80px; margin-top: 60px;">
     <div class="projects-dropdown">
         <button class="dropdown-toggle" id="dropdownToggle">
-            <span><i class="fas fa-list-check"></i> All Projects Timeline (44 Projects)</span>
+            <span><i class="fas fa-list-check"></i> View Complete Project Timeline (44 Projects)</span>
             <i class="fas fa-chevron-down"></i>
         </button>
         
@@ -303,13 +512,13 @@
                 <span class="project-year">2012</span>
                 <span class="project-status status-completed">Completed</span>
             </a>
-            <a href="#additional-projects" class="dropdown-item">
+            <a href="#featured-projects" class="dropdown-item">
                 <i class="fas fa-bicycle"></i> Bicycle Dynamo System
                 <span class="project-year">2014</span>
                 <span class="project-status status-completed">Completed</span>
             </a>
-            <a href="#additional-projects" class="dropdown-item">
-                <i class="fas fa-drone"></i> Spy Drone (Class 12th Project)
+            <a href="#featured-projects" class="dropdown-item">
+                <i class="fas fa-helicopter"></i> Spy Drone (Class 12th Project)
                 <span class="project-year">2015</span>
                 <span class="project-status status-completed">Completed</span>
             </a>
@@ -320,22 +529,22 @@
                 <span class="project-year">2018-19</span>
                 <span class="project-status status-completed">Completed</span>
             </a>
-            <a href="#additional-projects" class="dropdown-item">
+            <a href="#featured-projects" class="dropdown-item">
                 <i class="fas fa-truck"></i> Food Truck Electrical Wiring Layout
                 <span class="project-year">2017</span>
                 <span class="project-status status-completed">Completed</span>
             </a>
-            <a href="#additional-projects" class="dropdown-item">
+            <a href="#featured-projects" class="dropdown-item">
                 <i class="fas fa-gamepad"></i> Turbo Tapper Gaming Device
                 <span class="project-year">2017</span>
                 <span class="project-status status-completed">Completed</span>
             </a>
-            <a href="#additional-projects" class="dropdown-item">
+            <a href="#featured-projects" class="dropdown-item">
                 <i class="fas fa-solar-panel"></i> Small Solar Light Systems
                 <span class="project-year">2018</span>
                 <span class="project-status status-completed">Completed</span>
             </a>
-            <a href="#additional-projects" class="dropdown-item">
+            <a href="#featured-projects" class="dropdown-item">
                 <i class="fas fa-lightbulb"></i> Automatic Li-ion Home Lights (4 units)
                 <span class="project-year">2018</span>
                 <span class="project-status status-completed">Completed</span>
@@ -347,27 +556,27 @@
                 <span class="project-year">2020</span>
                 <span class="project-status status-completed">Completed</span>
             </a>
-            <a href="#additional-projects" class="dropdown-item">
-                <i class="fas fa-bird"></i> Temperature Monitoring for Exotic Birds
+            <a href="#featured-projects" class="dropdown-item">
+                <i class="fas fa-dove"></i> Temperature Monitoring for Exotic Birds
                 <span class="project-year">2020</span>
                 <span class="project-status status-completed">Completed</span>
             </a>
-            <a href="#additional-projects" class="dropdown-item">
+            <a href="#featured-projects" class="dropdown-item">
                 <i class="fas fa-faucet"></i> Automatic Motion-Sensing Tap
                 <span class="project-year">2019</span>
                 <span class="project-status status-completed">Completed</span>
             </a>
-            <a href="#additional-projects" class="dropdown-item">
-                <i class="fas fa-torch"></i> Joule Thief Flashlight (Depleted Batteries)
+            <a href="#featured-projects" class="dropdown-item">
+                <i class="fas fa-lightbulb"></i> Joule Thief Flashlight (Depleted Batteries)
                 <span class="project-year">2021-22</span>
                 <span class="project-status status-completed">Completed</span>
             </a>
-            <a href="#additional-projects" class="dropdown-item">
+            <a href="#featured-projects" class="dropdown-item">
                 <i class="fas fa-fire"></i> Small-Scale Steam Boiler for Dry Cleaning
                 <span class="project-year">2021</span>
                 <span class="project-status status-completed">Completed</span>
             </a>
-            <a href="#additional-projects" class="dropdown-item">
+            <a href="#featured-projects" class="dropdown-item">
                 <i class="fas fa-microscope"></i> Repairing Electronic Microscope
                 <span class="project-year">2021-22</span>
                 <span class="project-status status-completed">Completed</span>
@@ -379,22 +588,22 @@
                 <span class="project-year">2025</span>
                 <span class="project-status status-in-progress">In Progress</span>
             </a>
-            <a href="#additional-projects" class="dropdown-item">
+            <a href="#featured-projects" class="dropdown-item">
                 <i class="fas fa-robot"></i> Athena AI Home Assistant Unit
                 <span class="project-year">2023</span>
                 <span class="project-status status-completed">Completed</span>
             </a>
-            <a href="#additional-projects" class="dropdown-item">
+            <a href="#featured-projects" class="dropdown-item">
                 <i class="fas fa-shield-alt"></i> Home Intrusion Prevention System
                 <span class="project-year">2023</span>
                 <span class="project-status status-completed">Completed</span>
             </a>
-            <a href="#additional-projects" class="dropdown-item">
+            <a href="#featured-projects" class="dropdown-item">
                 <i class="fas fa-tire"></i> Automatic Tire Inflator
                 <span class="project-year">2023-24</span>
                 <span class="project-status status-in-progress">In Progress</span>
             </a>
-            <a href="#additional-projects" class="dropdown-item">
+            <a href="#featured-projects" class="dropdown-item">
                 <i class="fas fa-car-battery"></i> Automatic Battery Tender System
                 <span class="project-year">2023</span>
                 <span class="project-status status-completed">Completed</span>
@@ -421,34 +630,34 @@
             </a>
             
             <div class="dropdown-header">Frequently Built & Specialized</div>
-            <a href="#additional-projects" class="dropdown-item">
+            <a href="#featured-projects" class="dropdown-item">
                 <i class="fas fa-flashlight"></i> Waterproof Flashlights (20+ units)
                 <span class="project-year">Multiple</span>
                 <span class="project-status status-completed">Completed</span>
             </a>
-            <a href="#additional-projects" class="dropdown-item">
-                <i class="fas fa-toothbrush"></i> Electric Toothbrush Conversions
+            <a href="#featured-projects" class="dropdown-item">
+                <i class="fas fa-tooth"></i> Electric Toothbrush Conversions
                 <span class="project-year">Multiple</span>
                 <span class="project-status status-completed">Completed</span>
             </a>
-            <a href="#additional-projects" class="dropdown-item">
+            <a href="#featured-projects" class="dropdown-item">
                 <i class="fas fa-bolt"></i> Electric Fence for Home Defense
                 <span class="project-year">Multiple</span>
                 <span class="project-status status-completed">Completed</span>
             </a>
-            <a href="#additional-projects" class="dropdown-item">
+            <a href="#featured-projects" class="dropdown-item">
                 <i class="fas fa-camera"></i> Motion Capturing Camera Systems
                 <span class="project-year">Multiple</span>
                 <span class="project-status status-completed">Completed</span>
             </a>
-            <a href="#additional-projects" class="dropdown-item">
+            <a href="#featured-projects" class="dropdown-item">
                 <i class="fas fa-fire"></i> Efficient Electric+Gas Water Boilers
                 <span class="project-year">Multiple</span>
                 <span class="project-status status-completed">Completed</span>
             </a>
             
             <div class="dropdown-header">Restoration & Repair Work</div>
-            <a href="#additional-projects" class="dropdown-item">
+            <a href="#featured-projects" class="dropdown-item">
                 <i class="fas fa-car"></i> 1923 USA Jeep Torch Restoration
                 <span class="project-year">2022</span>
                 <span class="project-status status-completed">Completed</span>
@@ -478,188 +687,6 @@
             
             <div class="dropdown-count">44 Total Projects • 31 Completed • 7 In Progress • 6 Planned</div>
         </div>
-    </div>
-</section>
-
-<!-- ================= SELECTED PROJECTS ================= -->
-<section id="selected-projects" class="reveal">
-    <h2>Featured Projects</h2>
-    <p class="section-intro" style="margin-bottom: 40px; color: var(--text-muted); font-size: 1.1rem;">
-        These are my most significant and fully documented engineering builds, 
-        showcasing end-to-end system design and field validation.
-    </p>
-    
-    <div class="projects-grid">
-        <!-- Project 1 -->
-        <article class="project-card reveal delay-1">
-            <div class="project-icon">
-                <i class="fas fa-egg"></i>
-            </div>
-            <div class="project-content">
-                <h3>Programmable Automatic Egg Incubating Machine</h3>
-                <p class="project-outcome">
-                    <i class="fas fa-check-circle"></i> ±0.5°C temperature stability with dual-controller redundancy
-                </p>
-                <p class="project-outcome">
-                    <i class="fas fa-check-circle"></i> 85%+ hatch rate achieved with zero daily intervention
-                </p>
-                <p class="project-outcome">
-                    <i class="fas fa-check-circle"></i> 3-hour battery backup system for uninterrupted operation
-                </p>
-                <a href="projects/egg-incubator.html" class="project-link">View Full Technical Details →</a>
-            </div>
-        </article>
-
-        <!-- Project 2 -->
-        <article class="project-card reveal delay-2">
-            <div class="project-icon">
-                <i class="fas fa-tint"></i>
-            </div>
-            <div class="project-content">
-                <h3>Automatic Inline Water Pressure Booster System</h3>
-                <p class="project-outcome">
-                    <i class="fas fa-check-circle"></i> ESP32-based demand-driven pressure control
-                </p>
-                <p class="project-outcome">
-                    <i class="fas fa-check-circle"></i> Optimized for low-pressure residential environments
-                </p>
-                <p class="project-outcome">
-                    <i class="fas fa-check-circle"></i> Real-time monitoring with automatic adjustment logic
-                </p>
-                <a href="projects/water-pressure-booster.html" class="project-link">View Full Technical Details →</a>
-            </div>
-        </article>
-
-        <!-- Project 3 -->
-        <article class="project-card reveal delay-3">
-            <div class="project-icon">
-                <i class="fas fa-clock"></i>
-            </div>
-            <div class="project-content">
-                <h3>Alynx™ Geolocation-Based NTP WiFi LCD Clock</h3>
-                <p class="project-outcome">
-                    <i class="fas fa-check-circle"></i> Automatic timezone detection via geolocation
-                </p>
-                <p class="project-outcome">
-                    <i class="fas fa-check-circle"></i> NTP-synchronized with power-loss recovery
-                </p>
-                <p class="project-outcome">
-                    <i class="fas fa-check-circle"></i> Web-based configuration interface
-                </p>
-                <a href="projects/ntp-clock.html" class="project-link">View Full Technical Details →</a>
-            </div>
-        </article>
-
-        <!-- Project 4 -->
-        <article class="project-card reveal delay-1">
-            <div class="project-icon">
-                <i class="fas fa-gamepad"></i>
-            </div>
-            <div class="project-content">
-                <h3>HID Remote / Controller System</h3>
-                <p class="project-outcome">
-                    <i class="fas fa-check-circle"></i> Custom wireless human-interface device
-                </p>
-                <p class="project-outcome">
-                    <i class="fas fa-check-circle"></i> Embedded firmware with command logic
-                </p>
-                <p class="project-outcome">
-                    <i class="fas fa-check-circle"></i> Multi-device interaction capability
-                </p>
-                <a href="projects/hid-remote.html" class="project-link">View Full Technical Details →</a>
-            </div>
-        </article>
-    </div>
-</section>
-
-<!-- ================= ADDITIONAL PROJECTS ================= -->
-<section id="additional-projects" class="reveal">
-    <h2>Additional Engineering Work</h2>
-    <p class="section-intro" style="margin-bottom: 40px; color: var(--text-muted); font-size: 1.1rem;">
-        These projects demonstrate specialized engineering solutions across different 
-        domains, each addressing specific technical challenges.
-    </p>
-    
-    <div class="projects-grid">
-        <!-- Project 5 -->
-        <article class="project-card reveal delay-1">
-            <div class="project-icon">
-                <i class="fas fa-water"></i>
-            </div>
-            <div class="project-content">
-                <h3>Advance Smart Pool Water Quality Monitoring System</h3>
-                <p class="project-outcome">
-                    <i class="fas fa-check-circle"></i> Arduino-based TDS measurement and monitoring
-                </p>
-                <p class="project-outcome">
-                    <i class="fas fa-check-circle"></i> Accurate salt dosing calculation for pool maintenance
-                </p>
-                <p class="project-outcome">
-                    <i class="fas fa-check-circle"></i> Real-time water quality assessment and alerts
-                </p>
-                <a href="projects/pool-water-quality.html" class="project-link">View Full Technical Details →</a>
-            </div>
-        </article>
-
-        <!-- Project 6 -->
-        <article class="project-card reveal delay-2">
-            <div class="project-icon">
-                <i class="fas fa-pump"></i>
-            </div>
-            <div class="project-content">
-                <h3>IntelliFlow™ Automatic Municipal Water Pump Control System</h3>
-                <p class="project-outcome">
-                    <i class="fas fa-check-circle"></i> Municipal-grade pump protection and control
-                </p>
-                <p class="project-outcome">
-                    <i class="fas fa-check-circle"></i> Dry-run and cavitation prevention systems
-                </p>
-                <p class="project-outcome">
-                    <i class="fas fa-check-circle"></i> Automated scheduling for unattended operation
-                </p>
-                <a href="projects/intelliflow.html" class="project-link">View Full Technical Details →</a>
-            </div>
-        </article>
-
-        <!-- Project 7 -->
-        <article class="project-card reveal delay-3">
-            <div class="project-icon">
-                <i class="fas fa-filter"></i>
-            </div>
-            <div class="project-content">
-                <h3>AquaSense™ Smart TDS & Water Quality Optimization System</h3>
-                <p class="project-outcome">
-                    <i class="fas fa-check-circle"></i> Closed-loop TDS regulation for RO purification
-                </p>
-                <p class="project-outcome">
-                    <i class="fas fa-check-circle"></i> Automatic mineral dosing and quality control
-                </p>
-                <p class="project-outcome">
-                    <i class="fas fa-check-circle"></i> Real-time monitoring with optimization logic
-                </p>
-                <a href="projects/aquasense.html" class="project-link">View Full Technical Details →</a>
-            </div>
-        </article>
-
-        <!-- Project 8 - Coming Soon -->
-        <article class="project-card reveal delay-1" style="border-style: dashed; opacity: 0.8;">
-            <div class="project-icon" style="background: rgba(250, 204, 21, 0.2);">
-                <i class="fas fa-plus"></i>
-            </div>
-            <div class="project-content">
-                <h3>More Projects in Development</h3>
-                <p class="project-outcome">
-                    <i class="fas fa-clock"></i> Currently building next-generation IoT systems
-                </p>
-                <p class="project-outcome">
-                    <i class="fas fa-clock"></i> Advanced automation and control solutions
-                </p>
-                <p class="project-outcome">
-                    <i class="fas fa-clock"></i> Industrial-grade reliability engineering
-                </p>
-                <a href="inquiry.html" class="project-link">Discuss Your Project Idea →</a>
-            </div>
-        </article>
     </div>
 </section>
 
@@ -702,12 +729,13 @@
 </section>
 
 <script>
-    // Dropdown Toggle Functionality
+    // Dropdown Toggle Functionality - FIXED
     document.addEventListener('DOMContentLoaded', function() {
         const dropdownToggle = document.getElementById('dropdownToggle');
         const dropdownMenu = document.getElementById('dropdownMenu');
         
-        dropdownToggle.addEventListener('click', function() {
+        dropdownToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
             dropdownToggle.classList.toggle('active');
             dropdownMenu.classList.toggle('active');
         });
@@ -726,6 +754,11 @@
                 dropdownToggle.classList.remove('active');
                 dropdownMenu.classList.remove('active');
             }
+        });
+        
+        // Prevent dropdown from closing when clicking inside it
+        dropdownMenu.addEventListener('click', function(e) {
+            e.stopPropagation();
         });
     });
 </script>
