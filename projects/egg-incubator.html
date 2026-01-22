@@ -1,4 +1,320 @@
-<!-- Replace this entire System Images section -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Automatic Egg Incubating Machine | MD Hashim</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header>
+    <nav>
+        <h2>MD Hashim</h2>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../projects.html" class="active">Projects</a></li>
+            <li><a href="../resume.html">Resume</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="../inquiry.html">Project Inquiry</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="reveal">
+    <h1>Programmable Automatic Egg Incubating Machine</h1>
+    <p>
+        Fully automated egg incubation system designed to maintain stable
+        environmental conditions over a complete 28-day incubation cycle.
+    </p>
+</section>
+
+<section class="reveal">
+    <h2>Project Overview</h2>
+    <p>
+        This project involved the design and deployment of a fully automated,
+        industrial-grade egg incubation system built to address high chick
+        mortality caused by inconsistent environmental control and labor-intensive
+        manual monitoring in small to mid-scale poultry operations.
+    </p>
+    <p>
+        The system autonomously maintains precise temperature, humidity,
+        ventilation, and egg-turning conditions throughout the complete 28-day
+        incubation cycle, eliminating human intervention and ensuring consistent,
+        repeatable hatch outcomes.
+    </p>
+</section>
+
+<section class="reveal">
+    <h2>System Architecture & Subsystems</h2>
+
+    <h3>Temperature Control</h3>
+    <p>
+        Multi-level regulation using two W1209 digital thermostat controllers
+        with K-type thermocouples. One controller manages the primary heating
+        element, while the second provides redundant oversight, maintaining
+        stability within ±0.5 °C of the 37.8 °C setpoint.
+    </p>
+    
+    <figure class="diagram-section">
+<pre class="diagram">
+🌡️ TEMPERATURE CONTROL ±0.5°C
+├─ 🌡️ K-Type Thermocouple 1
+│     ↓
+├─ 🎚️ W1209 Primary Controller
+│     ↓
+└─ 🔥 MAIN HEATER (150W)
+
+├─ 🌡️ K-Type Thermocouple 2
+│     ↓
+├─ 🎚️ W1209 Secondary Controller
+│     ↓
+└─ ⚠️ AUX HEATER / ALARM
+
+🎯 SETPOINT: 37.8°C ±0.5°C
+</pre>
+        <figcaption>Dual-controller temperature regulation system with redundancy</figcaption>
+    </figure>
+
+    <h3>Humidity Management</h3>
+    <p>
+        A dedicated water reservoir with an ultrasonic mist maker controlled
+        by a humidity sensing module. Control logic regulates misting duty
+        cycle to maintain 55–65% RH, with programmable adjustments during
+        final hatch phases.
+    </p>
+    
+    <figure class="diagram-section">
+<pre class="diagram">
+💧 HUMIDITY CONTROL (55–65% RH)
+├─ 💧 HYGROMETER SENSOR
+│     ↓
+├─ 📈 PID CONTROLLER
+│     ↓
+├─ 💨 ULTRASONIC MIST MAKER
+│     ↓
+└─ 💦 WATER RESERVOIR
+
+📅 Programmable for hatch phases
+</pre>
+        <figcaption>Humidity control subsystem with PID regulation</figcaption>
+    </figure>
+
+    <h3>Automatic Egg Turning Mechanism</h3>
+    <p>
+        An AC-powered swing motor with a programmable timer drives a camshaft
+        connected to egg trays, rotating the tray assembly 45 degrees every
+        four hours to prevent embryo adhesion and mimic natural hen behavior.
+    </p>
+    
+    <figure class="diagram-section">
+<pre class="diagram">
+🔄 MECHANICAL TURNING
+├─ ⏰ 4-HOUR TIMER
+│     ↓
+├─ ⚙️ AC SWING MOTOR
+│     ↓
+├─ 🔩 CENTRAL CAMSHAFT
+│     ↓
+└─ 🥚 EGG TRAYS
+
+🎯 ACTION: 45° rotation every 4 hours
+📖 Mimics natural hen behavior
+</pre>
+        <figcaption>Automated egg turning mechanism timing diagram</figcaption>
+    </figure>
+
+    <h3>Ventilation & Air Circulation</h3>
+    <p>
+        High-volume DC axial fans establish forced-air circulation, ensuring
+        uniform temperature and humidity distribution while maintaining
+        adequate oxygen levels and CO₂ removal.
+    </p>
+    
+    <figure class="diagram-section">
+<pre class="diagram">
+💨 VENTILATION
+├─ 🌀 DUAL DC AXIAL FANS
+│   └─ 24/7 CONTINUOUS OPERATION
+└─ ✨ FUNCTIONS:
+   • 🌬️ Uniform air flow
+   • 🔄 Temperature homogenization
+   • 💨 O₂ IN / CO₂ OUT exchange
+   • ❄️ Hot spot prevention
+</pre>
+        <figcaption>Ventilation system functional overview</figcaption>
+    </figure>
+
+    <h3>Power System</h3>
+    <p>
+        Primary AC operation with automatic failover to a 12 V DC battery
+        system during mains failure, supported by an integrated charging
+        controller for battery readiness.
+    </p>
+</section>
+
+<section class="reveal">
+    <h2>Control Logic & Automation Strategy</h2>
+    <p>
+        The automation architecture follows a phased incubation state model
+        consisting of pre-heat, main incubation, lockdown, and hatch stages.
+        Each sensor–actuator pair operates in closed loop, supervised by
+        central logic to ensure stability and fault tolerance.
+    </p>
+    <p>
+        Redundant temperature monitoring, continuous ventilation, and
+        interval-based egg turning minimize single-point failures and
+        environmental drift across the incubation cycle.
+    </p>
+    
+    <figure class="diagram-section">
+<pre class="diagram">
+🧠 CENTRAL LOGIC UNIT (Microcontroller)
+├─ 📊 Data Logger
+├─ ⏰ 28-Day Phase Timer
+└─ 🔴 Pre-Heat → 🟡 Main → 🔵 Lockdown → 🟢 Hatch
+
+🚨 FAULT TOLERANCE:
+   🔄 Cross-monitoring
+   📢 Alert thresholds
+   🆘 Redundant sensors
+</pre>
+        <figcaption>Central control logic with state machine and fault tolerance</figcaption>
+    </figure>
+</section>
+
+<section class="reveal">
+    <h2>Power Failover & Reliability Engineering</h2>
+    <p>
+        A DPDT relay-based automatic AC–DC switching system ensures uninterrupted
+        operation during power outages. When mains power is available, the
+        system operates on rectified DC while charging a 12 V 100 Ah battery
+        bank. Upon failure, the load is instantly transferred to battery power.
+    </p>
+    <p>
+        This design provides approximately three hours of uninterrupted
+        operation, preventing temperature drops that could otherwise lead
+        to embryo mortality.
+    </p>
+    
+    <figure class="diagram-section">
+<pre class="diagram">
+⚡ POWER WITH FAILOVER
+[AC Mains 110/220V] ⚡
+        ↓
+[🔄 DPDT RELAY] (Auto-switch)
+     ↙️        ↘️
+[🟢 Normal Path]  [🔴 Backup Path]
+     ↓               ↓
+[🔌 AC/DC Rectifier]  [🔋 12V 100Ah Battery Bank]
+     ↓               ↑
+[12V DC Bus] ⬅ [🔋 Charging Controller]
+
+🔌 POWER LOADS (~250W total):
+• 🔥 Heating: 150W
+• 💨 Fans: 50W
+• 🧠 Logic: 20W
+• 💧 Mist Maker: 30W
+
+⏱️ BACKUP RUNTIME: ~3 HOURS
+</pre>
+        <figcaption>Power failover system schematic with component specifications</figcaption>
+    </figure>
+</section>
+
+<section class="reveal">
+    <h2>Engineering Challenges & Solutions</h2>
+    <ul>
+        <li><strong>Weather variation:</strong> Solved using a sealed,
+        insulated enclosure with forced internal circulation.</li>
+        <li><strong>Human error:</strong> Eliminated through full automation
+        of control loops and egg turning.</li>
+        <li><strong>Inconsistent monitoring:</strong> Resolved via continuous
+        sensor-based supervision and autonomous corrective action.</li>
+    </ul>
+    
+    <figure class="diagram-section">
+<pre class="diagram">
+📦 INSULATED CHAMBER
+├─ 🛡️ Thermal insulation
+├─ 🚪 Sealed door with gasket
+├─ 👁️ Viewing window
+├─ 💧 Water reservoir access
+└─ 🔌 Cable management ducts
+</pre>
+        <figcaption>Insulated chamber design features</figcaption>
+    </figure>
+    
+    <figure class="diagram-section">
+<pre class="diagram">
+🔧 PROBLEMS SOLVED:
+⚙️ Weather variation → Insulated enclosure
+⚙️ Human error → Full automation
+⚙️ Inconsistent monitoring → 24/7 sensors
+⚙️ Power outages → 3-hour battery backup
+</pre>
+        <figcaption>Problem-solution mapping for key engineering challenges</figcaption>
+    </figure>
+</section>
+
+<section class="reveal">
+    <h2>Performance Outcomes & Impact</h2>
+    <ul>
+        <li>Zero human intervention required during the full 28-day cycle</li>
+        <li>Improved hatch consistency exceeding 85% under test conditions</li>
+        <li>Eliminated dedicated labor requirements</li>
+        <li>Multiple complete incubation cycles completed without failure</li>
+    </ul>
+    
+    <figure class="diagram-section">
+<pre class="diagram">
+🏆 VALIDATED RESULTS:
+✅ HATCH RATE: >85%
+✅ TEMP STABILITY: ±0.5°C
+✅ HUMIDITY CONTROL: 55–65% RH
+✅ AUTONOMY: 28+ DAYS
+✅ POWER BACKUP: 3+ HOURS
+✅ FIELD TESTED: Multiple cycles
+✅ ZERO DAILY HUMAN INTERVENTION
+</pre>
+        <figcaption>Validated performance metrics from field testing</figcaption>
+    </figure>
+</section>
+
+<section class="reveal">
+    <h2>Technical Summary</h2>
+    <ul>
+        <li>Designed and built a fully automated incubation system integrating
+        temperature, humidity, ventilation, and power-fail protection.</li>
+        <li>Implemented robust control logic using W1209 controllers and
+        programmable electromechanical mechanisms.</li>
+        <li>Engineered an automatic AC–DC failover system guaranteeing
+        uninterrupted operation during outages.</li>
+        <li>Validated performance across multiple full incubation cycles,
+        achieving consistent hatch outcomes.</li>
+    </ul>
+    
+    <figure class="diagram-section">
+<pre class="diagram">
+📈 KEY OUTCOMES:
+➕ Increased hatch consistency (>85%)
+➖ Eliminated labor costs
+🐤 Improved chick survival rates
+⚙️ Demonstrated field reliability
+🔄 Zero daily intervention required
+</pre>
+        <figcaption>Key outcomes and business impacts</figcaption>
+    </figure>
+</section>
+
+<!-- ================= SYSTEM IMAGES SECTION ================= -->
 <section class="reveal">
     <h2>System Images</h2>
 
@@ -6,20 +322,20 @@
         <!-- Dimension photos -->
         <figure>
             <img src="../assets/egg-incubator/1.jpg"
-                 alt="Egg Incubator Machine - Front view with dimensions">
-            <figcaption>Front view showing overall dimensions</figcaption>
+                 alt="Egg Incubator Machine - Front view with dimensions showing overall size">
+            <figcaption>Front view - overall dimensions</figcaption>
         </figure>
 
         <figure>
             <img src="../assets/egg-incubator/2.jpg"
                  alt="Egg Incubator Machine - Side view dimensional layout">
-            <figcaption>Side view dimensional layout</figcaption>
+            <figcaption>Side view - dimensional layout</figcaption>
         </figure>
 
         <figure>
             <img src="../assets/egg-incubator/3.jpg"
-                 alt="Egg Incubator Machine - Top view with measurements">
-            <figcaption>Top view with precise measurements</figcaption>
+                 alt="Egg Incubator Machine - Top view with precise measurements">
+            <figcaption>Top view - precise measurements</figcaption>
         </figure>
 
         <figure>
@@ -31,41 +347,64 @@
         <!-- Control panel photos -->
         <figure>
             <img src="../assets/egg-incubator/5.jpg"
-                 alt="Egg Incubator - Control panel interface view">
-            <figcaption>Control panel interface and display</figcaption>
+                 alt="Egg Incubator - Control panel interface and temperature display">
+            <figcaption>Control panel interface</figcaption>
         </figure>
 
         <figure>
             <img src="../assets/egg-incubator/6.jpg"
-                 alt="Egg Incubator - Control electronics layout">
-            <figcaption>Control electronics and wiring layout</figcaption>
+                 alt="Egg Incubator - Control electronics wiring and layout">
+            <figcaption>Control electronics wiring</figcaption>
         </figure>
 
         <!-- Interior photo -->
         <figure>
             <img src="../assets/egg-incubator/7.jpg"
-                 alt="Egg Incubator - Internal chamber view with egg trays">
-            <figcaption>Internal chamber with egg tray assembly</figcaption>
+                 alt="Egg Incubator - Internal chamber view showing egg tray assembly">
+            <figcaption>Internal chamber with egg trays</figcaption>
         </figure>
     </div>
 </section>
 
-<!-- Replace the entire Demonstration Video section -->
+<!-- ================= VIDEO SECTION ================= -->
 <section class="reveal">
     <h2>System Demonstration</h2>
     
     <div class="media-grid">
         <figure class="video-container">
-            <video controls poster="../assets/egg-incubator/video-poster.jpg">
+            <video controls>
                 <source src="../assets/egg-incubator/8.mp4" type="video/mp4">
-                <source src="../assets/egg-incubator/8.webm" type="video/webm">
                 Your browser does not support the video tag.
             </video>
-            <figcaption>Full system demonstration: temperature control, egg turning mechanism, and user interface operation</figcaption>
+            <figcaption>System demonstration: Temperature control, egg turning mechanism, and user interface operation</figcaption>
         </figure>
     </div>
     
-    <p style="margin-top: 20px; font-size: 14px; color: var(--text-muted);">
-        Video shows: 1) Power-on sequence 2) Temperature regulation in action 3) Humidity control system 4) Automatic egg turning mechanism 5) Control panel interface
+    <p style="margin-top: 20px; font-size: 14px; color: #888;">
+        <strong>Video highlights:</strong> Power-on sequence • Temperature regulation • Humidity control system • Automatic egg turning • Control panel interface
     </p>
 </section>
+
+<section class="reveal">
+    <h2>Diagrams & Schematics</h2>
+    
+    <figure class="diagram-section">
+<pre class="diagram">
+CENTRAL LOGIC → All subsystems
+SENSORS → CONTROLLERS → ACTUATORS (closed-loop)
+AC → DPDT RELAY → [Rectifier | Battery] (auto-switch)
+28-DAY TIMER → Phase-based environmental adjustments
+4-HOUR TIMER → AC Swing Motor → Egg Trays
+</pre>
+        <figcaption>System architecture overview with component relationships</figcaption>
+    </figure>
+</section>
+
+<section class="reveal">
+    <h2>Source Code & Documentation</h2>
+    <p>Complete schematics, wiring diagrams, and control logic documentation available upon request.</p>
+</section>
+
+<script src="../script.js"></script>
+</body>
+</html>
