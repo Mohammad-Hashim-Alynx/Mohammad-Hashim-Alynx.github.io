@@ -88,26 +88,25 @@
     <figure class="diagram-section">
 <pre class="diagram">
 🔧 REQUIRED COMPONENTS:
-┌─────────────────────────────┐
-│ 🧠 ESP32 DEVELOPMENT BOARD  │
-│  • ESP32-WROOM-32 or similar│
-│  • WiFi 2.4GHz capability   │
-│  • 4MB Flash minimum        │
-└─────────────────────────────┘
+
+ 🧠 ESP32 DEVELOPMENT BOARD  
+  • ESP32-WROOM-32 or similar
+  • WiFi 2.4GHz capability   
+  • 4MB Flash minimum        
+
           ↓
-┌─────────────────────────────┐
-│ 📺 20x4 LCD WITH I2C        │
-│  • 20 columns, 4 rows       │
-│  • I2C backpack (PCF8574)   │
-│  • Address: 0x27 or 0x3F    │
-└─────────────────────────────┘
+
+ 📺 20x4 LCD WITH I2C        
+  • 20 columns, 4 rows       
+  • I2C backpack (PCF8574)   
+  • Address: 0x27 or 0x3F    
+
           ↓
-┌─────────────────────────────┐
-│ 🔘 CONFIGURATION BUTTON     │
-│  • Tactile switch           │
-│  • GPIO 4 (with pull-up)    │
-│  • No external resistor     │
-└─────────────────────────────┘
+
+ 🔘 CONFIGURATION BUTTON     
+  • Tactile switch           
+  • GPIO 4 (with pull-up)    
+  • No external resistor     
 
 🔌 OPTIONAL COMPONENTS:
 • 📦 3D printed case
@@ -135,17 +134,16 @@ ESP32 GPIO 4  → Button (other side to GND)
 ESP32 Vin/USB → 5V Power Supply
 
 🔧 DETAILED CONNECTIONS:
-┌─────────────────────────────────────┐
-│         ESP32 BOARD                   │
-│  GPIO 21 ────→ SDA ──┐             │
-│  GPIO 22 ────→ SCL ──┼→ LCD I2C   │
-│  3.3V   ────→ VCC ──┘   (0x27)     │
-│  GND    ────→ GND                   │
-│  GPIO 4 ────→ Button ──┐           │
-│                        ↓               │
-│                       GND             │
-│  Vin ──────→ 5V Power Supply       │
-└─────────────────────────────────────┘
+
+         ESP32 BOARD                 
+  GPIO 21 ────→ SDA ──┐             
+  GPIO 22 ────→ SCL ──┼→ LCD I2C   
+  3.3V   ────→ VCC ──┘   (0x27)     
+  GND    ────→ GND                  
+  GPIO 4 ────→ Button ──┐           
+                       ↓           
+                      GND          
+  Vin ──────→ 5V Power Supply       
 
 ⚡ POWER NOTES:
 • Use 5V/1A regulated power supply
@@ -210,16 +208,15 @@ ROW 3: STATUS MESSAGE (Centered)
 📶 INTELLIGENT WIFI MANAGEMENT:
 
 BOOT PHASES & RETRY INTERVALS:
-┌─────────────────┬─────────────┬────────────────────┐
-│     PHASE       │ DURATION    │ RETRY INTERVAL     │
-├─────────────────┼─────────────┼────────────────────┤
-│ BOOT_START      │ 0-10 sec    │ Immediate attempts │
-│ BOOT_ATTEMPT_1  │ 10-20 sec   │ Every 5 seconds    │
-│ BOOT_ATTEMPT_2  │ 20-30 sec   │ Every 5 seconds    │
-│ BOOT_ATTEMPT_3  │ 30-60 sec   │ Every 10 seconds   │
-│ BOOT_QUICK_RETRY│ 1-2 min     │ Every 10 seconds   │
-│ BOOT_NORMAL     │ After 2 min │ Every 60 seconds   │
-└─────────────────┴─────────────┴────────────────────┘
+
+     PHASE        DURATION    RETRY INTERVAL     
+ --------------------------------------------------
+ BOOT_START       0-10 sec    Immediate attempts 
+ BOOT_ATTEMPT_1   10-20 sec   Every 5 seconds    
+ BOOT_ATTEMPT_2   20-30 sec   Every 5 seconds    
+ BOOT_ATTEMPT_3   30-60 sec   Every 10 seconds   
+ BOOT_QUICK_RETRY 1-2 min     Every 10 seconds   
+ BOOT_NORMAL      After 2 min Every 60 seconds   
 
 🔁 CONNECTION RECOVERY:
 
@@ -485,21 +482,19 @@ String statusDisconnected = "Allahu Akbar!"
 <pre class="diagram">
 📊 SYSTEM SPECIFICATIONS:
 
-┌───────────────┬───────────────── ─┐
-│ SPECIFICATION       │ VALUE                   │
-├───────────────┼──────────────── ──┤
-│ Controller          │ ESP32 Dev Board         │
-│ Display             │ 20x4 LCD with I2C       │
-│ Time Accuracy       │ NTP ±10ms               │
-│ WiFi                │ 2.4GHz 802.11 b/g/n     │
-│ Power Consumption   │ 150-300mA @ 5V          │
-│ Memory Usage        │ ~40% of available       │
-│ Update Rate         │ 1 second (display)      │
-│ NTP Sync Interval   │ 1 hour                  │
-│ WiFi Retry Interval │ 60 seconds (normal)     │
-│ Temperature Range   │ 0°C to 70°C (operating) │
-│ Dimensions          │ Varies by enclosure     │
-└─────────────────────┴──── ────────┘
+SPECIFICATION          VALUE                   
+------------------------------------------------
+Controller             ESP32 Dev Board         
+Display                20x4 LCD with I2C       
+Time Accuracy          NTP ±10ms               
+WiFi                   2.4GHz 802.11 b/g/n     
+Power Consumption      150-300mA @ 5V          
+Memory Usage           ~40% of available       
+Update Rate            1 second (display)      
+NTP Sync Interval      1 hour                  
+WiFi Retry Interval    60 seconds (normal)     
+Temperature Range      0°C to 70°C (operating) 
+Dimensions             Varies by enclosure     
 
 ⚡ POWER CONSUMPTION:
 • Standby (display on): 250mA @ 5V = 1.25W
