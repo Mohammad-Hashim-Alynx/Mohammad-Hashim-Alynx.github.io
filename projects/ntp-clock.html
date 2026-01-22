@@ -211,7 +211,7 @@ ROW 3: STATUS MESSAGE (Centered)
 
 BOOT PHASES & RETRY INTERVALS:
 ┌─────────────────┬─────────────┬────────────────────┐
-│     PHASE             │ DURATION         │ RETRY INTERVAL             │
+│     PHASE       │ DURATION    │ RETRY INTERVAL     │
 ├─────────────────┼─────────────┼────────────────────┤
 │ BOOT_START      │ 0-10 sec    │ Immediate attempts │
 │ BOOT_ATTEMPT_1  │ 10-20 sec   │ Every 5 seconds    │
@@ -485,9 +485,9 @@ String statusDisconnected = "Allahu Akbar!"
 <pre class="diagram">
 📊 SYSTEM SPECIFICATIONS:
 
-┌─────────────────────┬─────────────────────────┐
+┌───────────────┬───────────────── ─┐
 │ SPECIFICATION       │ VALUE                   │
-├─────────────────────┼─────────────────────────┤
+├───────────────┼──────────────── ──┤
 │ Controller          │ ESP32 Dev Board         │
 │ Display             │ 20x4 LCD with I2C       │
 │ Time Accuracy       │ NTP ±10ms               │
@@ -499,7 +499,7 @@ String statusDisconnected = "Allahu Akbar!"
 │ WiFi Retry Interval │ 60 seconds (normal)     │
 │ Temperature Range   │ 0°C to 70°C (operating) │
 │ Dimensions          │ Varies by enclosure     │
-└─────────────────────┴─────────────────────────┘
+└─────────────────────┴──── ────────┘
 
 ⚡ POWER CONSUMPTION:
 • Standby (display on): 250mA @ 5V = 1.25W
