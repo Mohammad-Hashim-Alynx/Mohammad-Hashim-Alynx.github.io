@@ -2,13 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>MD Hashim | Portfolio</title>
+    <title>MD Hashim | Embedded Systems & IoT Engineer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Main CSS -->
     <link rel="stylesheet" href="style.css">
@@ -17,7 +20,6 @@
 
     <!-- ================= HEADER / HERO ================= -->
     <header id="home" class="home-header">
-
         <nav>
             <h2>MD Hashim</h2>
             <ul>
@@ -29,136 +31,241 @@
             </ul>
         </nav>
 
+        <section class="hero">
+            <!-- LEFT: TEXT CONTENT -->
+            <div class="hero-content">
+                <h1 class="hero-title">MD Hashim</h1>
 
-<section class="hero">
+                <h3 class="hero-subtitle">
+                    Mechanical Engineer building reliable embedded & IoT systems
+                </h3>
 
-    <!-- LEFT: TEXT CONTENT -->
-    <div class="hero-content">
-        <h1 class="hero-title">MD Hashim</h1>
+                <p class="hero-text">
+                    I design and deploy real-world hardware–software solutions focused on
+                    automation, efficiency, and long-term reliability.
+                </p>
 
-        <h3 class="hero-subtitle">
-            Mechanical Engineer building reliable embedded & IoT systems
-        </h3>
+                <div class="hero-buttons">
+                    <a href="projects.html" class="btn-primary">View Projects</a>
+                    <a href="inquiry.html" class="btn-secondary">Project Inquiry</a>
+                </div>
+            </div>
 
-        <p class="hero-text">
-            I design and deploy real-world hardware–software solutions focused on
-            automation, efficiency, and long-term reliability.
-        </p>
-
-        <div class="hero-buttons">
-            <a href="projects.html">View Projects</a>
-            <a href="inquiry.html">Project Inquiry</a>
-        </div>
-    </div>
-
-    <!-- RIGHT: IMAGE -->
-    <div class="hero-image">
-        <img
-            src="assets/md-hashim.png"
-            alt="MD Hashim – Mechanical Engineer"
-        >
-    </div>
-
-</section>
-
-
-
+            <!-- RIGHT: IMAGE -->
+            <div class="hero-image">
+                <img
+                    src="assets/md-hashim.png"
+                    alt="MD Hashim – Mechanical Engineer"
+                >
+            </div>
+        </section>
     </header>
+
+    <!-- ================= ACHIEVEMENT COUNTERS ================= -->
+    <section class="achievement-counters reveal">
+        <div class="counter-container">
+            <div class="counter-item">
+                <div class="counter-number">5+</div>
+                <div class="counter-label">Embedded Systems Built</div>
+            </div>
+            
+            <div class="counter-item">
+                <div class="counter-number">100%</div>
+                <div class="counter-label">Field-Tested Reliability</div>
+            </div>
+            
+            <div class="counter-item">
+                <div class="counter-number">4</div>
+                <div class="counter-label">Completed Projects</div>
+            </div>
+            
+            <div class="counter-item">
+                <div class="counter-number">28+</div>
+                <div class="counter-label">Days System Autonomy</div>
+            </div>
+        </div>
+    </section>
 
     <!-- ================= ABOUT ================= -->
     <section id="about" class="reveal">
         <h2>About Me</h2>
         <p>
-I am a Mechanical Engineer focused on building practical embedded and IoT
-systems that operate reliably in real-world conditions.
-I enjoy designing end-to-end solutions — from sensing and control logic
-to deployment and field reliability.
-</p>
-
+            I am a Mechanical Engineer focused on building practical embedded and IoT
+            systems that operate reliably in real-world conditions.
+            I enjoy designing end-to-end solutions — from sensing and control logic
+            to deployment and field reliability.
+        </p>
     </section>
 
     <!-- ================= SKILLS ================= -->
     <section id="skills" class="reveal">
-    <h2>Skills</h2>
-    <ul>
-        <li class="reveal delay-1">Embedded Systems</li>
-        <li class="reveal delay-2">Arduino / ESP32</li>
-        <li class="reveal delay-3">IoT Systems</li>
-        <li class="reveal delay-1">Mechanical Design</li>
-        <li class="reveal delay-2">Problem Solving</li>
-    </ul>
-</section>
-
+        <h2>Technical Skills</h2>
+        <div class="skills-container">
+            <div class="skill-category reveal delay-1">
+                <h3><i class="fas fa-microchip"></i> Embedded Systems</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Arduino</span>
+                    <span class="skill-tag">ESP32</span>
+                    <span class="skill-tag">Raspberry Pi</span>
+                    <span class="skill-tag">Microcontrollers</span>
+                </div>
+            </div>
+            
+            <div class="skill-category reveal delay-2">
+                <h3><i class="fas fa-cloud"></i> IoT & Networking</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">IoT Systems</span>
+                    <span class="skill-tag">WiFi/BLE</span>
+                    <span class="skill-tag">MQTT</span>
+                    <span class="skill-tag">NTP</span>
+                </div>
+            </div>
+            
+            <div class="skill-category reveal delay-3">
+                <h3><i class="fas fa-cogs"></i> Engineering</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Mechanical Design</span>
+                    <span class="skill-tag">CAD</span>
+                    <span class="skill-tag">Thermal Management</span>
+                    <span class="skill-tag">Power Systems</span>
+                </div>
+            </div>
+            
+            <div class="skill-category reveal delay-1">
+                <h3><i class="fas fa-code"></i> Software & Tools</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">C/C++</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">PCB Design</span>
+                    <span class="skill-tag">Git</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- ================= PROJECTS ================= -->
-<section id="projects" class="reveal">
-    <h2>Selected Projects</h2>
+    <section id="projects" class="reveal">
+        <h2>Selected Projects</h2>
+        
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <article class="project-card reveal delay-1">
+                <div class="project-icon">
+                    <i class="fas fa-egg"></i>
+                </div>
+                <div class="project-content">
+                    <h3>Programmable Automatic Egg Incubating Machine</h3>
+                    <p class="project-outcome">
+                        <i class="fas fa-check-circle"></i> Achieved ±0.5°C temperature stability
+                    </p>
+                    <p class="project-outcome">
+                        <i class="fas fa-check-circle"></i> 85%+ hatch rate with zero daily intervention
+                    </p>
+                    <p class="project-outcome">
+                        <i class="fas fa-check-circle"></i> 3-hour battery backup for power failover
+                    </p>
+                    <a href="projects/egg-incubator.html" class="project-link">View Full Details →</a>
+                </div>
+            </article>
 
-    <article class="reveal delay-1">
-        <h3>Programmable Automatic Egg Incubating Machine</h3>
-        <p>
-        Fully automated incubation system with closed-loop temperature,
-        humidity, egg turning, ventilation, and power-fail protection.
-        </p>
-        <a href="projects/egg-incubator.html">View details →</a>
-    </article>
+            <!-- Project 2 -->
+            <article class="project-card reveal delay-2">
+                <div class="project-icon">
+                    <i class="fas fa-tint"></i>
+                </div>
+                <div class="project-content">
+                    <h3>Automatic Inline Water Pressure Booster System</h3>
+                    <p class="project-outcome">
+                        <i class="fas fa-check-circle"></i> ESP32-based demand-driven control
+                    </p>
+                    <p class="project-outcome">
+                        <i class="fas fa-check-circle"></i> Optimized for low-pressure residential supply
+                    </p>
+                    <p class="project-outcome">
+                        <i class="fas fa-check-circle"></i> Real-time pressure monitoring & adjustment
+                    </p>
+                    <a href="projects/water-pressure-booster.html" class="project-link">View Full Details →</a>
+                </div>
+            </article>
 
-    <article class="reveal delay-2">
-        <h3>Automatic Inline Water Pressure Booster System</h3>
-        <p>
-        ESP32-based demand-driven water pressure control system designed
-        for low-pressure residential water supply environments.
-        </p>
-        <a href="projects/water-pressure-booster.html">View details →</a>
-    </article>
+            <!-- Project 3 -->
+            <article class="project-card reveal delay-3">
+                <div class="project-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="project-content">
+                    <h3>Alynx™ Geolocation-Based NTP WiFi LCD Clock</h3>
+                    <p class="project-outcome">
+                        <i class="fas fa-check-circle"></i> Automatic timezone detection
+                    </p>
+                    <p class="project-outcome">
+                        <i class="fas fa-check-circle"></i> NTP-synchronized with power-loss recovery
+                    </p>
+                    <p class="project-outcome">
+                        <i class="fas fa-check-circle"></i> Web-based configuration interface
+                    </p>
+                    <a href="projects/ntp-clock.html" class="project-link">View Full Details →</a>
+                </div>
+            </article>
 
-    <article class="reveal delay-3">
-        <h3>Alynx™ Geolocation-Based NTP WiFi LCD Clock</h3>
-        <p>
-        ESP32-based NTP-synchronized clock with automatic timezone
-        detection, power-loss recovery, and web-based configuration.
-        </p>
-        <a href="projects/ntp-clock.html">View details →</a>
-    </article>
-
-    <article class="reveal delay-1">
-        <h3>HID Remote / Controller System</h3>
-        <p>
-        Custom human-interface control system implementing wireless
-        command input, device interaction, and embedded firmware logic.
-        </p>
-        <a href="projects/hid-remote.html">View details →</a>
-    </article>
-</section>
+            <!-- Project 4 -->
+            <article class="project-card reveal delay-1">
+                <div class="project-icon">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <div class="project-content">
+                    <h3>HID Remote / Controller System</h3>
+                    <p class="project-outcome">
+                        <i class="fas fa-check-circle"></i> Custom wireless human-interface device
+                    </p>
+                    <p class="project-outcome">
+                        <i class="fas fa-check-circle"></i> Embedded firmware with command logic
+                    </p>
+                    <p class="project-outcome">
+                        <i class="fas fa-check-circle"></i> Multi-device interaction capability
+                    </p>
+                    <a href="projects/hid-remote.html" class="project-link">View Full Details →</a>
+                </div>
+            </article>
+        </div>
+    </section>
 
     <!-- ================= CONTACT ================= -->
     <section id="contact" class="reveal">
-    <h2>Contact</h2>
+        <h2>Contact</h2>
+        
+        <div class="contact-container">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <div>
+                    <h3>Email</h3>
+                    <a href="mailto:md.hashim.work@gmail.com">md.hashim.work@gmail.com</a>
+                </div>
+            </div>
+            
+            <div class="contact-item">
+                <i class="fab fa-github"></i>
+                <div>
+                    <h3>GitHub</h3>
+                    <a href="https://github.com/Mohammad-Hashim-Alynx" target="_blank" rel="noopener">
+                        github.com/Mohammad-Hashim-Alynx
+                    </a>
+                </div>
+            </div>
+            
+            <div class="contact-item">
+                <i class="fab fa-linkedin"></i>
+                <div>
+                    <h3>LinkedIn</h3>
+                    <a href="https://linkedin.com/in/md-hashim-work-linkdin" target="_blank" rel="noopener">
+                        linkedin.com/in/md-hashim-work-linkdin
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <p>
-        Email:
-        <a href="mailto:md.hashim.work@gmail.com">
-            md.hashim.work@gmail.com
-        </a>
-    </p>
-
-    <p>
-        GitHub:
-        <a href="https://github.com/Mohammad-Hashim-Alynx" target="_blank" rel="noopener">
-            github.com/Mohammad-Hashim-Alynx
-        </a>
-    </p>
-
-    <p>
-        LinkedIn:
-        <a href="https://linkedin.com/in/md-hashim-work-linkdin" target="_blank" rel="noopener">
-            linkedin.com/in/md-hashim-work-linkdin
-        </a>
-    </p>
-</section>
-
-
-    <!-- JS (will be used in Step 3) -->
+    <!-- JS -->
     <script src="script.js"></script>
 </body>
 </html>
