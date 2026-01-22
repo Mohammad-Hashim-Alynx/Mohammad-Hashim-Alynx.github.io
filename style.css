@@ -33,7 +33,7 @@ nav {
     position: sticky;
     top: 0;
     background-color: var(--bg-card);
-    z-index: 100;
+    z-index: 1000;
 }
 
 nav h2 {
@@ -403,7 +403,7 @@ h3 {
     transform: translateX(5px);
 }
 
-/* ================= DROPDOWN MENU STYLES - FIXED VERSION ================= */
+/* ================= DROPDOWN MENU STYLES - COMPLETELY FIXED ================= */
 .projects-dropdown {
     position: relative;
     display: block;
@@ -455,24 +455,25 @@ h3 {
     opacity: 0;
     visibility: hidden;
     transform: translateY(-15px);
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1000;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
     max-height: 500px;
     overflow-y: auto;
-    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-x: hidden;
+    pointer-events: none;
 }
 
 .dropdown-menu.active {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+    pointer-events: auto;
 }
 
-/* Fix for dropdown items text wrapping */
+/* SIMPLIFIED DROPDOWN ITEMS - NO COMPLEX FLEX WRAPPING */
 .dropdown-item {
-    display: flex;
-    align-items: center;
+    display: block;
     padding: 14px 28px;
     color: var(--text-main);
     text-decoration: none;
@@ -480,10 +481,8 @@ h3 {
     border-left: 4px solid transparent;
     font-size: 0.95rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    white-space: normal; /* Allow text to wrap */
-    word-wrap: break-word; /* Break long words */
-    overflow-wrap: break-word; /* Modern alternative */
-    min-height: 50px; /* Ensure consistent height */
+    position: relative;
+    overflow: hidden;
 }
 
 .dropdown-item:last-child {
@@ -500,31 +499,26 @@ h3 {
     width: 20px;
     margin-right: 12px;
     color: var(--accent-light);
-    flex-shrink: 0; /* Prevent icon from shrinking */
-}
-
-.dropdown-item-content {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-width: 0; /* Allow text truncation */
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .dropdown-item-text {
-    flex: 1;
-    min-width: 0; /* Allow text truncation */
+    display: inline-block;
+    vertical-align: middle;
+    max-width: calc(100% - 150px);
+    word-break: break-word;
     margin-right: 10px;
 }
 
-/* Fix for project year and status containers */
+/* Project year and status - SIMPLE VERSION */
 .project-year {
     font-size: 0.8rem;
     color: var(--text-muted);
-    margin-left: 8px;
+    margin: 0 8px;
     font-weight: 500;
-    white-space: nowrap;
-    flex-shrink: 0;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .project-status {
@@ -533,8 +527,9 @@ h3 {
     border-radius: 12px;
     margin-left: 10px;
     font-weight: 500;
-    white-space: nowrap;
-    flex-shrink: 0;
+    display: inline-block;
+    vertical-align: middle;
+    float: right;
 }
 
 .status-completed {
@@ -583,6 +578,13 @@ h3 {
     bottom: 0;
     z-index: 2;
     backdrop-filter: blur(10px);
+}
+
+/* Clear floats */
+.dropdown-item::after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
 /* Quick Project Stats */
@@ -933,22 +935,23 @@ figcaption {
         font-size: 1.5rem;
     }
     
-    /* Dropdown Responsive */
+    /* ========== DROPDOWN MOBILE FIXES ========== */
     .dropdown-menu {
-        position: fixed;
-        top: 50%;
-        left: 20px;
-        right: 20px;
-        width: calc(100% - 40px);
-        max-height: 70vh;
-        overflow-y: auto;
-        transform: translateY(-40%);
-        z-index: 9999;
-        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+        position: fixed !important;
+        top: 50% !important;
+        left: 20px !important;
+        right: 20px !important;
+        width: calc(100% - 40px) !important;
+        max-height: 70vh !important;
+        overflow-y: auto !important;
+        transform: translateY(-40%) !important;
+        z-index: 9999 !important;
+        -webkit-overflow-scrolling: touch !important;
+        overscroll-behavior: contain !important;
     }
     
     .dropdown-menu.active {
-        transform: translateY(-50%);
+        transform: translateY(-50%) !important;
     }
     
     .project-stats {
@@ -972,33 +975,30 @@ figcaption {
     
     .dropdown-item {
         padding: 12px 20px;
-        flex-wrap: wrap; /* Allow wrapping on mobile */
+        font-size: 0.9rem;
     }
     
     .dropdown-header {
         padding: 12px 20px;
+        font-size: 0.85rem;
     }
     
-    .dropdown-item-content {
-        width: 100%;
+    .dropdown-count {
+        padding: 12px 20px;
+        font-size: 0.85rem;
     }
     
     .dropdown-item-text {
-        margin-right: 0;
+        max-width: calc(100% - 120px);
+        display: block;
         margin-bottom: 5px;
     }
     
     .project-year,
     .project-status {
-        margin-left: 0;
-        margin-top: 5px;
-    }
-    
-    /* Stack year and status on mobile */
-    .dropdown-item-meta {
-        display: flex;
-        gap: 10px;
-        width: 100%;
+        float: none;
+        display: inline-block;
+        margin: 2px 5px 2px 0;
     }
     
     /* Contact */
@@ -1081,18 +1081,20 @@ figcaption {
     
     .dropdown-item {
         padding: 10px 15px;
-        font-size: 0.9rem;
-    }
-    
-    .dropdown-header,
-    .dropdown-count {
-        padding: 10px 15px;
         font-size: 0.85rem;
     }
     
-    .project-year,
-    .project-status {
+    .dropdown-item-text {
+        max-width: calc(100% - 100px);
+    }
+    
+    .project-year {
         font-size: 0.7rem;
+    }
+    
+    .project-status {
+        font-size: 0.65rem;
+        padding: 3px 8px;
     }
     
     /* Media Grid */
