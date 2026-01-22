@@ -176,7 +176,8 @@ section h2 {
 
 /* ================= TEXT DIAGRAM ================= */
 .diagram-section {
-    margin-top: 40px;
+    margin-top: 32px;
+    margin-bottom: 32px; /* 🔧 Added spacing between consecutive diagrams */
 }
 
 .diagram {
@@ -186,21 +187,39 @@ section h2 {
     padding: 20px 24px;
     border-radius: 8px;
     font-family: "JetBrains Mono", "Courier New", monospace;
-    font-size: 15px;
+    font-size: 14.5px; /* 🔧 Updated font size for emoji consistency */
     line-height: 1.6;
     color: #eaeaea;
     white-space: pre;
     overflow-x: auto;
 }
 
+/* 🔧 Figure and figcaption styles for accessibility */
+figure.diagram-section {
+    margin: 32px 0;
+}
+
+figcaption {
+    display: block;
+    margin-top: 8px;
+    font-size: 14px;
+    color: var(--text-muted);
+    text-align: center;
+    font-style: italic;
+    padding: 0 10px;
+}
+
 /* Mobile readability */
 @media (max-width: 768px) {
     .diagram {
-        font-size: 14px;
+        font-size: 13.5px; /* 🔧 Slightly smaller on mobile for consistency */
         padding: 16px;
     }
+    
+    figcaption {
+        font-size: 13px;
+    }
 }
-
 
 /* ================= SKILLS ================= */
 #skills ul {
